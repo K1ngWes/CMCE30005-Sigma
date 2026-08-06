@@ -3,13 +3,16 @@
 
 **Subject:** CMCE30005 Business Analytics Challenge, Semester 2 2026
 **University:** University of Melbourne
-**Team Members:** Wesley, Sam, Teresa, Ellen
+**Team Members:** Wesley, Sam, Teresa, Ellen.
 
 ---
 
 ## Business Problem
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0908f93348293147f7b6787d335575ff3806a740
 [Write your one-paragraph problem statement here. Include: who is the stakeholder,
 what question you are answering, why it matters, and what methods you plan to use.]
 
