@@ -5,6 +5,13 @@
 **University:** University of Melbourne
 **Team Members:** [Teresa], [Ellen], [Wesley Kim], [Samuel Choong]
 
+## CMCE30005-Sigma - Airbnb Melbourne - June 2026 Snapshot
+
+**Subject:** CMCE30005 Business Analytics Challenge, Semester 2 2026
+**University:** University of Melbourne
+**Team Members:** Wesley, Sam, Teresa, Ellen
+
+
 ---
 
 ## Business Problem
@@ -33,4 +40,5 @@ what question you are answering, why it matters, and what methods you plan to us
 
 ---
 
-*Last updated: [Date]*
+=======
+*Last updated: 06/08/2026*
