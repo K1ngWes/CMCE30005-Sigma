@@ -1,9 +1,9 @@
 # CMCE30005 Business Analytics Challenge
-## Sigma - [Your Dataset Name]
+## Sigma - Airbnb Melbourne - June 2026 Snapshot
 
 **Subject:** CMCE30005 Business Analytics Challenge, Semester 2 2026
 **University:** University of Melbourne
-**Team Members:** [Name 1], [Name 2], [Name 3], [Name 4]
+**Team Members:** [Teresa], [Ellen], [Wesley], [Samuel]
 
 ---
 
@@ -16,7 +16,7 @@ what question you are answering, why it matters, and what methods you plan to us
 
 ## Dataset
 
-**Dataset name:** [e.g., Airbnb Melbourne - June 2026 Snapshot]
+**Dataset name:** Airbnb Melbourne - June 2026 Snapshot
 **Source:** [e.g., Inside Airbnb - http://insideairbnb.com/]
 **Coverage:** [e.g., All active Airbnb listings in Melbourne as of 16 June 2026]
 
