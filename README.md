@@ -3,7 +3,7 @@
 
 **Subject:** CMCE30005 Business Analytics Challenge, Semester 2 2026
 **University:** University of Melbourne
-**Team Members:** [Teresa], [Ellen], [Wesley], [Samuel]
+**Team Members:** [Teresa], [Ellen], [Wesley], [Samuel C]
 
 ---
 
@@ -11,7 +11,6 @@
 
 [Write your one-paragraph problem statement here. Include: who is the stakeholder,
 what question you are answering, why it matters, and what methods you plan to use.]
-testing
 
 ---
 
