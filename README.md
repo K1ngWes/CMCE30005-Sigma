@@ -3,7 +3,7 @@
 
 **Subject:** CMCE30005 Business Analytics Challenge, Semester 2 2026
 **University:** University of Melbourne
-**Team Members:** [Teresa], [Ellen], [Wesley], [Samuel C]
+**Team Members:** [Teresa], [Ellen], [Wesley], [Samuel Choong]
 
 ---
 
