@@ -38,9 +38,8 @@ what question you are answering, why it matters, and what methods you plan to us
 
 | File | Description | Size |
 |------|-------------|------|
-| `listings_all.csv` | Full listing details (~75 variables) | ~50 MB |
-| `reviews_all.csv` | Guest review text | ~200 MB |
-| `calendar_all.csv` | Daily availability and pricing | ~1 GB |
+| `business-establishments-with-address-and-industry-classification.csv` | Address and industry | ~size MB |
+| `business-establishments-and-jobs-data-by-business-size-and-anzsic.csv` | Jobs data | ~size MB |
 
 
 > **Note:** Data files are not committed to this repository due to size.
