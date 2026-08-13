@@ -6,6 +6,18 @@
 **University:** University of Melbourne
 **Team Members:** [Name 1], [Name 2], [Name 3], [Name 4]
 try
+# CMCE30005 Business Analytics Challenge
+## Sigma - Airbnb Melbourne - June 2026 Snapshot
+
+**Subject:** CMCE30005 Business Analytics Challenge, Semester 2 2026
+**University:** University of Melbourne
+**Team Members:** [Teresa], [Ellen], [Wesley Kim], [Samuel Choong]
+
+## CMCE30005-Sigma - Airbnb Melbourne - June 2026 Snapshot
+
+**Subject:** CMCE30005 Business Analytics Challenge, Semester 2 2026
+**University:** University of Melbourne
+**Team Members:** Wesley, Sam, Teresa, Ellen !
 
 ---
 
@@ -18,7 +30,7 @@ what question you are answering, why it matters, and what methods you plan to us
 
 ## Dataset
 
-**Dataset name:** [e.g., Airbnb Melbourne - June 2026 Snapshot]
+**Dataset name:** Airbnb Melbourne - June 2026 Snapshot
 **Source:** [e.g., Inside Airbnb - http://insideairbnb.com/]
 **Coverage:** [e.g., All active Airbnb listings in Melbourne as of 16 June 2026]
 
@@ -31,3 +43,9 @@ what question you are answering, why it matters, and what methods you plan to us
 | `calendar_all.csv` | Daily availability and pricing | ~1 GB |
 
 
+> **Note:** Data files are not committed to this repository due to size.
+> Download from: [insert download URL or instructions]
+
+---
+
+*Last updated: 06/08/2026*
