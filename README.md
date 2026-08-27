@@ -47,6 +47,11 @@ area, industry sector, and business size class | ~size MB |
 > **Note:** Data files are not committed to this repository due to size.
 > Download from: [insert download URL or instructions]
 
+![SME Establishment Trends by Industry](sme establishment trends by industry.png)
+this is r code so it wont show up when you try to run it, but it will show up if you preview at the top
+
+
+
 ---
 
 *Last updated: 06/08/2026*
