@@ -38,8 +38,10 @@ what question you are answering, why it matters, and what methods you plan to us
 
 | File | Description | Size |
 |------|-------------|------|
-| `business-establishments-with-address-and-industry-classification.csv` | Address and industry | ~size MB |
-| `business-establishments-and-jobs-data-by-business-size-and-anzsic.csv` | Jobs data | ~size MB |
+| `business-establishments-with-address-and-industry-classification.csv` | Every individual business by location, address, and industry
+classification, by census year | ~size MB |
+| `business-establishments-and-jobs-data-by-business-size-and-anzsic.csv` | Aggregated counts of establishments and jobs by CLUE
+area, industry sector, and business size class | ~size MB |
 
 
 > **Note:** Data files are not committed to this repository due to size.
