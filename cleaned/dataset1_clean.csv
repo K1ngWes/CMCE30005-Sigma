@@ -1,0 +1,872 @@
+census_year,clue_small_area,anzsic_industry,business_size,total_establishments,total_jobs,jobs_suppressed
+2002,Melbourne (CBD),Accommodation and Food Services,Medium business,124,5752,FALSE
+2002,Melbourne (CBD),Accommodation and Food Services,Small business,852,6095,FALSE
+2002,Melbourne (CBD),Administrative and Support Services,Medium business,78,3771,FALSE
+2002,Melbourne (CBD),Administrative and Support Services,Small business,404,2353,FALSE
+2002,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,1,NA,TRUE
+2002,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,6,30,FALSE
+2002,Melbourne (CBD),Arts and Recreation Services,Medium business,16,1032,FALSE
+2002,Melbourne (CBD),Arts and Recreation Services,Small business,69,352,FALSE
+2002,Melbourne (CBD),Construction,Medium business,10,616,FALSE
+2002,Melbourne (CBD),Construction,Small business,57,334,FALSE
+2002,Melbourne (CBD),Education and Training,Medium business,36,1999,FALSE
+2002,Melbourne (CBD),Education and Training,Small business,98,713,FALSE
+2002,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,6,538,FALSE
+2002,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,10,94,FALSE
+2002,Melbourne (CBD),Financial and Insurance Services,Medium business,147,8768,FALSE
+2002,Melbourne (CBD),Financial and Insurance Services,Small business,428,2952,FALSE
+2002,Melbourne (CBD),Health Care and Social Assistance,Medium business,20,696,FALSE
+2002,Melbourne (CBD),Health Care and Social Assistance,Small business,312,1318,FALSE
+2002,Melbourne (CBD),Information Media and Telecommunications,Medium business,49,3066,FALSE
+2002,Melbourne (CBD),Information Media and Telecommunications,Small business,143,812,FALSE
+2002,Melbourne (CBD),Manufacturing,Medium business,12,576,FALSE
+2002,Melbourne (CBD),Manufacturing,Small business,275,892,FALSE
+2002,Melbourne (CBD),Mining,Medium business,3,137,FALSE
+2002,Melbourne (CBD),Mining,Small business,25,148,FALSE
+2002,Melbourne (CBD),Other Services,Medium business,44,2042,FALSE
+2002,Melbourne (CBD),Other Services,Small business,501,2132,FALSE
+2002,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,228,11826,FALSE
+2002,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1072,6384,FALSE
+2002,Melbourne (CBD),Public Administration and Safety,Medium business,70,4842,FALSE
+2002,Melbourne (CBD),Public Administration and Safety,Small business,65,495,FALSE
+2002,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,22,1021,FALSE
+2002,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,123,682,FALSE
+2002,Melbourne (CBD),Retail Trade,Medium business,60,2725,FALSE
+2002,Melbourne (CBD),Retail Trade,Small business,1237,5695,FALSE
+2002,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,24,1289,FALSE
+2002,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,85,582,FALSE
+2002,Melbourne (CBD),Wholesale Trade,Medium business,10,403,FALSE
+2002,Melbourne (CBD),Wholesale Trade,Small business,115,447,FALSE
+2003,Melbourne (CBD),Accommodation and Food Services,Medium business,124,5752,FALSE
+2003,Melbourne (CBD),Accommodation and Food Services,Small business,852,6095,FALSE
+2003,Melbourne (CBD),Administrative and Support Services,Medium business,78,3771,FALSE
+2003,Melbourne (CBD),Administrative and Support Services,Small business,404,2353,FALSE
+2003,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,1,NA,TRUE
+2003,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,6,30,FALSE
+2003,Melbourne (CBD),Arts and Recreation Services,Medium business,16,1032,FALSE
+2003,Melbourne (CBD),Arts and Recreation Services,Small business,69,352,FALSE
+2003,Melbourne (CBD),Construction,Medium business,10,616,FALSE
+2003,Melbourne (CBD),Construction,Small business,57,334,FALSE
+2003,Melbourne (CBD),Education and Training,Medium business,36,1999,FALSE
+2003,Melbourne (CBD),Education and Training,Small business,98,713,FALSE
+2003,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,6,538,FALSE
+2003,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,10,94,FALSE
+2003,Melbourne (CBD),Financial and Insurance Services,Medium business,147,8768,FALSE
+2003,Melbourne (CBD),Financial and Insurance Services,Small business,428,2952,FALSE
+2003,Melbourne (CBD),Health Care and Social Assistance,Medium business,20,696,FALSE
+2003,Melbourne (CBD),Health Care and Social Assistance,Small business,312,1318,FALSE
+2003,Melbourne (CBD),Information Media and Telecommunications,Medium business,49,3066,FALSE
+2003,Melbourne (CBD),Information Media and Telecommunications,Small business,143,812,FALSE
+2003,Melbourne (CBD),Manufacturing,Medium business,12,576,FALSE
+2003,Melbourne (CBD),Manufacturing,Small business,275,892,FALSE
+2003,Melbourne (CBD),Mining,Medium business,3,137,FALSE
+2003,Melbourne (CBD),Mining,Small business,25,148,FALSE
+2003,Melbourne (CBD),Other Services,Medium business,44,2042,FALSE
+2003,Melbourne (CBD),Other Services,Small business,501,2132,FALSE
+2003,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,228,11826,FALSE
+2003,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1072,6384,FALSE
+2003,Melbourne (CBD),Public Administration and Safety,Medium business,70,4842,FALSE
+2003,Melbourne (CBD),Public Administration and Safety,Small business,65,495,FALSE
+2003,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,22,1021,FALSE
+2003,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,123,682,FALSE
+2003,Melbourne (CBD),Retail Trade,Medium business,60,2725,FALSE
+2003,Melbourne (CBD),Retail Trade,Small business,1237,5695,FALSE
+2003,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,24,1289,FALSE
+2003,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,85,582,FALSE
+2003,Melbourne (CBD),Wholesale Trade,Medium business,10,403,FALSE
+2003,Melbourne (CBD),Wholesale Trade,Small business,115,447,FALSE
+2004,Melbourne (CBD),Accommodation and Food Services,Medium business,153,6926,FALSE
+2004,Melbourne (CBD),Accommodation and Food Services,Small business,941,6639,FALSE
+2004,Melbourne (CBD),Administrative and Support Services,Medium business,81,3760,FALSE
+2004,Melbourne (CBD),Administrative and Support Services,Small business,420,2384,FALSE
+2004,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,2,NA,TRUE
+2004,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,7,13,FALSE
+2004,Melbourne (CBD),Arts and Recreation Services,Medium business,22,1056,FALSE
+2004,Melbourne (CBD),Arts and Recreation Services,Small business,84,339,FALSE
+2004,Melbourne (CBD),Construction,Medium business,12,603,FALSE
+2004,Melbourne (CBD),Construction,Small business,56,367,FALSE
+2004,Melbourne (CBD),Education and Training,Medium business,42,2414,FALSE
+2004,Melbourne (CBD),Education and Training,Small business,103,698,FALSE
+2004,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,6,348,FALSE
+2004,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,14,99,FALSE
+2004,Melbourne (CBD),Financial and Insurance Services,Medium business,144,8172,FALSE
+2004,Melbourne (CBD),Financial and Insurance Services,Small business,399,2754,FALSE
+2004,Melbourne (CBD),Health Care and Social Assistance,Medium business,16,676,FALSE
+2004,Melbourne (CBD),Health Care and Social Assistance,Small business,313,1417,FALSE
+2004,Melbourne (CBD),Information Media and Telecommunications,Medium business,41,2369,FALSE
+2004,Melbourne (CBD),Information Media and Telecommunications,Small business,150,951,FALSE
+2004,Melbourne (CBD),Manufacturing,Medium business,7,319,FALSE
+2004,Melbourne (CBD),Manufacturing,Small business,278,902,FALSE
+2004,Melbourne (CBD),Mining,Medium business,3,157,FALSE
+2004,Melbourne (CBD),Mining,Small business,22,137,FALSE
+2004,Melbourne (CBD),Other Services,Medium business,34,1811,FALSE
+2004,Melbourne (CBD),Other Services,Small business,510,2260,FALSE
+2004,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,221,11791,FALSE
+2004,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1131,6633,FALSE
+2004,Melbourne (CBD),Public Administration and Safety,Medium business,74,5471,FALSE
+2004,Melbourne (CBD),Public Administration and Safety,Small business,63,546,FALSE
+2004,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,21,1074,FALSE
+2004,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,120,649,FALSE
+2004,Melbourne (CBD),Retail Trade,Medium business,64,3065,FALSE
+2004,Melbourne (CBD),Retail Trade,Small business,1319,6046,FALSE
+2004,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,23,1461,FALSE
+2004,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,78,567,FALSE
+2004,Melbourne (CBD),Wholesale Trade,Medium business,7,299,FALSE
+2004,Melbourne (CBD),Wholesale Trade,Small business,122,533,FALSE
+2005,Melbourne (CBD),Accommodation and Food Services,Medium business,166,7186,FALSE
+2005,Melbourne (CBD),Accommodation and Food Services,Small business,985,7193,FALSE
+2005,Melbourne (CBD),Administrative and Support Services,Medium business,81,3680,FALSE
+2005,Melbourne (CBD),Administrative and Support Services,Small business,407,2412,FALSE
+2005,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,2,NA,TRUE
+2005,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,7,13,FALSE
+2005,Melbourne (CBD),Arts and Recreation Services,Medium business,19,1271,FALSE
+2005,Melbourne (CBD),Arts and Recreation Services,Small business,71,367,FALSE
+2005,Melbourne (CBD),Construction,Medium business,10,585,FALSE
+2005,Melbourne (CBD),Construction,Small business,57,374,FALSE
+2005,Melbourne (CBD),Education and Training,Medium business,48,2838,FALSE
+2005,Melbourne (CBD),Education and Training,Small business,122,821,FALSE
+2005,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,6,364,FALSE
+2005,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,11,90,FALSE
+2005,Melbourne (CBD),Financial and Insurance Services,Medium business,139,7582,FALSE
+2005,Melbourne (CBD),Financial and Insurance Services,Small business,449,3057,FALSE
+2005,Melbourne (CBD),Health Care and Social Assistance,Medium business,21,813,FALSE
+2005,Melbourne (CBD),Health Care and Social Assistance,Small business,331,1634,FALSE
+2005,Melbourne (CBD),Information Media and Telecommunications,Medium business,46,2769,FALSE
+2005,Melbourne (CBD),Information Media and Telecommunications,Small business,152,997,FALSE
+2005,Melbourne (CBD),Manufacturing,Medium business,9,360,FALSE
+2005,Melbourne (CBD),Manufacturing,Small business,261,813,FALSE
+2005,Melbourne (CBD),Mining,Medium business,4,335,FALSE
+2005,Melbourne (CBD),Mining,Small business,30,163,FALSE
+2005,Melbourne (CBD),Other Services,Medium business,37,1904,FALSE
+2005,Melbourne (CBD),Other Services,Small business,529,2223,FALSE
+2005,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,213,11234,FALSE
+2005,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1211,7184,FALSE
+2005,Melbourne (CBD),Public Administration and Safety,Medium business,77,5560,FALSE
+2005,Melbourne (CBD),Public Administration and Safety,Small business,63,486,FALSE
+2005,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,21,1048,FALSE
+2005,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,124,698,FALSE
+2005,Melbourne (CBD),Retail Trade,Medium business,71,3631,FALSE
+2005,Melbourne (CBD),Retail Trade,Small business,1468,7063,FALSE
+2005,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,25,1510,FALSE
+2005,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,76,549,FALSE
+2005,Melbourne (CBD),Wholesale Trade,Medium business,7,305,FALSE
+2005,Melbourne (CBD),Wholesale Trade,Small business,128,517,FALSE
+2006,Melbourne (CBD),Accommodation and Food Services,Medium business,175,7764,FALSE
+2006,Melbourne (CBD),Accommodation and Food Services,Small business,1068,7695,FALSE
+2006,Melbourne (CBD),Administrative and Support Services,Medium business,83,3871,FALSE
+2006,Melbourne (CBD),Administrative and Support Services,Small business,429,2526,FALSE
+2006,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,1,NA,TRUE
+2006,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,6,33,FALSE
+2006,Melbourne (CBD),Arts and Recreation Services,Medium business,21,1539,FALSE
+2006,Melbourne (CBD),Arts and Recreation Services,Small business,78,448,FALSE
+2006,Melbourne (CBD),Construction,Medium business,12,600,FALSE
+2006,Melbourne (CBD),Construction,Small business,60,425,FALSE
+2006,Melbourne (CBD),Education and Training,Medium business,63,3760,FALSE
+2006,Melbourne (CBD),Education and Training,Small business,131,905,FALSE
+2006,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,8,667,FALSE
+2006,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,10,84,FALSE
+2006,Melbourne (CBD),Financial and Insurance Services,Medium business,143,7751,FALSE
+2006,Melbourne (CBD),Financial and Insurance Services,Small business,486,3360,FALSE
+2006,Melbourne (CBD),Health Care and Social Assistance,Medium business,19,635,FALSE
+2006,Melbourne (CBD),Health Care and Social Assistance,Small business,331,1677,FALSE
+2006,Melbourne (CBD),Information Media and Telecommunications,Medium business,51,3088,FALSE
+2006,Melbourne (CBD),Information Media and Telecommunications,Small business,147,1006,FALSE
+2006,Melbourne (CBD),Manufacturing,Medium business,8,372,FALSE
+2006,Melbourne (CBD),Manufacturing,Small business,256,798,FALSE
+2006,Melbourne (CBD),Mining,Medium business,6,472,FALSE
+2006,Melbourne (CBD),Mining,Small business,33,168,FALSE
+2006,Melbourne (CBD),Other Services,Medium business,42,1926,FALSE
+2006,Melbourne (CBD),Other Services,Small business,531,2166,FALSE
+2006,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,231,12576,FALSE
+2006,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1303,7879,FALSE
+2006,Melbourne (CBD),Public Administration and Safety,Medium business,78,5718,FALSE
+2006,Melbourne (CBD),Public Administration and Safety,Small business,64,451,FALSE
+2006,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,26,1227,FALSE
+2006,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,132,751,FALSE
+2006,Melbourne (CBD),Retail Trade,Medium business,71,3594,FALSE
+2006,Melbourne (CBD),Retail Trade,Small business,1503,7299,FALSE
+2006,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,27,1819,FALSE
+2006,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,67,469,FALSE
+2006,Melbourne (CBD),Wholesale Trade,Medium business,8,345,FALSE
+2006,Melbourne (CBD),Wholesale Trade,Small business,126,525,FALSE
+2007,Melbourne (CBD),Accommodation and Food Services,Medium business,186,8191,FALSE
+2007,Melbourne (CBD),Accommodation and Food Services,Small business,1095,7749,FALSE
+2007,Melbourne (CBD),Administrative and Support Services,Medium business,84,3882,FALSE
+2007,Melbourne (CBD),Administrative and Support Services,Small business,444,2537,FALSE
+2007,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,1,NA,TRUE
+2007,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,6,33,FALSE
+2007,Melbourne (CBD),Arts and Recreation Services,Medium business,18,1141,FALSE
+2007,Melbourne (CBD),Arts and Recreation Services,Small business,98,476,FALSE
+2007,Melbourne (CBD),Construction,Medium business,10,518,FALSE
+2007,Melbourne (CBD),Construction,Small business,61,422,FALSE
+2007,Melbourne (CBD),Education and Training,Medium business,68,3828,FALSE
+2007,Melbourne (CBD),Education and Training,Small business,162,1120,FALSE
+2007,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,8,647,FALSE
+2007,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,8,77,FALSE
+2007,Melbourne (CBD),Financial and Insurance Services,Medium business,142,7649,FALSE
+2007,Melbourne (CBD),Financial and Insurance Services,Small business,495,3391,FALSE
+2007,Melbourne (CBD),Health Care and Social Assistance,Medium business,25,890,FALSE
+2007,Melbourne (CBD),Health Care and Social Assistance,Small business,335,1655,FALSE
+2007,Melbourne (CBD),Information Media and Telecommunications,Medium business,53,3401,FALSE
+2007,Melbourne (CBD),Information Media and Telecommunications,Small business,143,959,FALSE
+2007,Melbourne (CBD),Manufacturing,Medium business,9,402,FALSE
+2007,Melbourne (CBD),Manufacturing,Small business,273,845,FALSE
+2007,Melbourne (CBD),Mining,Medium business,6,481,FALSE
+2007,Melbourne (CBD),Mining,Small business,34,189,FALSE
+2007,Melbourne (CBD),Other Services,Medium business,40,1917,FALSE
+2007,Melbourne (CBD),Other Services,Small business,563,2284,FALSE
+2007,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,256,13613,FALSE
+2007,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1376,8146,FALSE
+2007,Melbourne (CBD),Public Administration and Safety,Medium business,77,5499,FALSE
+2007,Melbourne (CBD),Public Administration and Safety,Small business,71,498,FALSE
+2007,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,28,1234,FALSE
+2007,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,141,775,FALSE
+2007,Melbourne (CBD),Retail Trade,Medium business,63,2906,FALSE
+2007,Melbourne (CBD),Retail Trade,Small business,1535,7554,FALSE
+2007,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,26,1738,FALSE
+2007,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,69,496,FALSE
+2007,Melbourne (CBD),Wholesale Trade,Medium business,9,354,FALSE
+2007,Melbourne (CBD),Wholesale Trade,Small business,122,501,FALSE
+2008,Melbourne (CBD),Accommodation and Food Services,Medium business,197,8271,FALSE
+2008,Melbourne (CBD),Accommodation and Food Services,Small business,1141,8116,FALSE
+2008,Melbourne (CBD),Administrative and Support Services,Medium business,85,3784,FALSE
+2008,Melbourne (CBD),Administrative and Support Services,Small business,460,2702,FALSE
+2008,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,2,NA,TRUE
+2008,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,6,19,FALSE
+2008,Melbourne (CBD),Arts and Recreation Services,Medium business,21,1269,FALSE
+2008,Melbourne (CBD),Arts and Recreation Services,Small business,105,521,FALSE
+2008,Melbourne (CBD),Construction,Medium business,14,705,FALSE
+2008,Melbourne (CBD),Construction,Small business,63,387,FALSE
+2008,Melbourne (CBD),Education and Training,Medium business,87,5515,FALSE
+2008,Melbourne (CBD),Education and Training,Small business,208,1506,FALSE
+2008,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,7,535,FALSE
+2008,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,8,60,FALSE
+2008,Melbourne (CBD),Financial and Insurance Services,Medium business,159,9125,FALSE
+2008,Melbourne (CBD),Financial and Insurance Services,Small business,545,3501,FALSE
+2008,Melbourne (CBD),Health Care and Social Assistance,Medium business,28,1154,FALSE
+2008,Melbourne (CBD),Health Care and Social Assistance,Small business,353,1732,FALSE
+2008,Melbourne (CBD),Information Media and Telecommunications,Medium business,46,2833,FALSE
+2008,Melbourne (CBD),Information Media and Telecommunications,Small business,147,1005,FALSE
+2008,Melbourne (CBD),Manufacturing,Medium business,8,391,FALSE
+2008,Melbourne (CBD),Manufacturing,Small business,276,824,FALSE
+2008,Melbourne (CBD),Mining,Medium business,6,492,FALSE
+2008,Melbourne (CBD),Mining,Small business,38,254,FALSE
+2008,Melbourne (CBD),Other Services,Medium business,39,2162,FALSE
+2008,Melbourne (CBD),Other Services,Small business,603,2503,FALSE
+2008,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,281,14219,FALSE
+2008,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1485,8373,FALSE
+2008,Melbourne (CBD),Public Administration and Safety,Medium business,87,6470,FALSE
+2008,Melbourne (CBD),Public Administration and Safety,Small business,75,545,FALSE
+2008,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,30,1377,FALSE
+2008,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,157,864,FALSE
+2008,Melbourne (CBD),Retail Trade,Medium business,64,2909,FALSE
+2008,Melbourne (CBD),Retail Trade,Small business,1521,7446,FALSE
+2008,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,25,1532,FALSE
+2008,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,65,462,FALSE
+2008,Melbourne (CBD),Wholesale Trade,Medium business,10,275,FALSE
+2008,Melbourne (CBD),Wholesale Trade,Small business,109,453,FALSE
+2009,Melbourne (CBD),Accommodation and Food Services,Medium business,197,8267,FALSE
+2009,Melbourne (CBD),Accommodation and Food Services,Small business,1184,8813,FALSE
+2009,Melbourne (CBD),Administrative and Support Services,Medium business,85,3712,FALSE
+2009,Melbourne (CBD),Administrative and Support Services,Small business,455,2711,FALSE
+2009,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,2,NA,TRUE
+2009,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,5,19,FALSE
+2009,Melbourne (CBD),Arts and Recreation Services,Medium business,25,1738,FALSE
+2009,Melbourne (CBD),Arts and Recreation Services,Small business,129,588,FALSE
+2009,Melbourne (CBD),Construction,Medium business,17,867,FALSE
+2009,Melbourne (CBD),Construction,Small business,61,378,FALSE
+2009,Melbourne (CBD),Education and Training,Medium business,89,5590,FALSE
+2009,Melbourne (CBD),Education and Training,Small business,204,1394,FALSE
+2009,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,7,527,FALSE
+2009,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,12,96,FALSE
+2009,Melbourne (CBD),Financial and Insurance Services,Medium business,156,9067,FALSE
+2009,Melbourne (CBD),Financial and Insurance Services,Small business,539,3501,FALSE
+2009,Melbourne (CBD),Health Care and Social Assistance,Medium business,31,1215,FALSE
+2009,Melbourne (CBD),Health Care and Social Assistance,Small business,357,1771,FALSE
+2009,Melbourne (CBD),Information Media and Telecommunications,Medium business,39,2475,FALSE
+2009,Melbourne (CBD),Information Media and Telecommunications,Small business,144,993,FALSE
+2009,Melbourne (CBD),Manufacturing,Medium business,5,320,FALSE
+2009,Melbourne (CBD),Manufacturing,Small business,279,864,FALSE
+2009,Melbourne (CBD),Mining,Medium business,6,492,FALSE
+2009,Melbourne (CBD),Mining,Small business,41,266,FALSE
+2009,Melbourne (CBD),Other Services,Medium business,39,2193,FALSE
+2009,Melbourne (CBD),Other Services,Small business,658,2748,FALSE
+2009,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,290,14608,FALSE
+2009,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1469,8303,FALSE
+2009,Melbourne (CBD),Public Administration and Safety,Medium business,82,6179,FALSE
+2009,Melbourne (CBD),Public Administration and Safety,Small business,68,504,FALSE
+2009,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,31,1450,FALSE
+2009,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,158,882,FALSE
+2009,Melbourne (CBD),Retail Trade,Medium business,69,2984,FALSE
+2009,Melbourne (CBD),Retail Trade,Small business,1505,7361,FALSE
+2009,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,23,1542,FALSE
+2009,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,63,441,FALSE
+2009,Melbourne (CBD),Wholesale Trade,Medium business,10,273,FALSE
+2009,Melbourne (CBD),Wholesale Trade,Small business,109,477,FALSE
+2010,Melbourne (CBD),Accommodation and Food Services,Medium business,201,8401,FALSE
+2010,Melbourne (CBD),Accommodation and Food Services,Small business,1237,9232,FALSE
+2010,Melbourne (CBD),Administrative and Support Services,Medium business,88,4110,FALSE
+2010,Melbourne (CBD),Administrative and Support Services,Small business,429,2488,FALSE
+2010,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,1,NA,TRUE
+2010,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,3,17,FALSE
+2010,Melbourne (CBD),Arts and Recreation Services,Medium business,24,1457,FALSE
+2010,Melbourne (CBD),Arts and Recreation Services,Small business,131,605,FALSE
+2010,Melbourne (CBD),Construction,Medium business,15,769,FALSE
+2010,Melbourne (CBD),Construction,Small business,61,414,FALSE
+2010,Melbourne (CBD),Education and Training,Medium business,95,5898,FALSE
+2010,Melbourne (CBD),Education and Training,Small business,193,1304,FALSE
+2010,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,10,757,FALSE
+2010,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,11,106,FALSE
+2010,Melbourne (CBD),Financial and Insurance Services,Medium business,151,9267,FALSE
+2010,Melbourne (CBD),Financial and Insurance Services,Small business,507,3430,FALSE
+2010,Melbourne (CBD),Health Care and Social Assistance,Medium business,33,1327,FALSE
+2010,Melbourne (CBD),Health Care and Social Assistance,Small business,356,1770,FALSE
+2010,Melbourne (CBD),Information Media and Telecommunications,Medium business,36,2455,FALSE
+2010,Melbourne (CBD),Information Media and Telecommunications,Small business,137,895,FALSE
+2010,Melbourne (CBD),Manufacturing,Medium business,5,419,FALSE
+2010,Melbourne (CBD),Manufacturing,Small business,274,850,FALSE
+2010,Melbourne (CBD),Mining,Medium business,6,570,FALSE
+2010,Melbourne (CBD),Mining,Small business,40,285,FALSE
+2010,Melbourne (CBD),Other Services,Medium business,34,1766,FALSE
+2010,Melbourne (CBD),Other Services,Small business,667,2871,FALSE
+2010,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,295,14664,FALSE
+2010,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1371,7960,FALSE
+2010,Melbourne (CBD),Public Administration and Safety,Medium business,85,6289,FALSE
+2010,Melbourne (CBD),Public Administration and Safety,Small business,62,462,FALSE
+2010,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,29,1496,FALSE
+2010,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,163,944,FALSE
+2010,Melbourne (CBD),Retail Trade,Medium business,64,2727,FALSE
+2010,Melbourne (CBD),Retail Trade,Small business,1515,7389,FALSE
+2010,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,25,1485,FALSE
+2010,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,55,424,FALSE
+2010,Melbourne (CBD),Wholesale Trade,Medium business,9,291,FALSE
+2010,Melbourne (CBD),Wholesale Trade,Small business,109,502,FALSE
+2011,Melbourne (CBD),Accommodation and Food Services,Medium business,219,8909,FALSE
+2011,Melbourne (CBD),Accommodation and Food Services,Small business,1275,9519,FALSE
+2011,Melbourne (CBD),Administrative and Support Services,Medium business,88,4028,FALSE
+2011,Melbourne (CBD),Administrative and Support Services,Small business,421,2472,FALSE
+2011,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,1,NA,TRUE
+2011,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,3,17,FALSE
+2011,Melbourne (CBD),Arts and Recreation Services,Medium business,26,1616,FALSE
+2011,Melbourne (CBD),Arts and Recreation Services,Small business,134,594,FALSE
+2011,Melbourne (CBD),Construction,Medium business,16,756,FALSE
+2011,Melbourne (CBD),Construction,Small business,57,359,FALSE
+2011,Melbourne (CBD),Education and Training,Medium business,96,6124,FALSE
+2011,Melbourne (CBD),Education and Training,Small business,192,1262,FALSE
+2011,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,11,845,FALSE
+2011,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,10,100,FALSE
+2011,Melbourne (CBD),Financial and Insurance Services,Medium business,153,9656,FALSE
+2011,Melbourne (CBD),Financial and Insurance Services,Small business,513,3457,FALSE
+2011,Melbourne (CBD),Health Care and Social Assistance,Medium business,38,1639,FALSE
+2011,Melbourne (CBD),Health Care and Social Assistance,Small business,344,1704,FALSE
+2011,Melbourne (CBD),Information Media and Telecommunications,Medium business,37,2261,FALSE
+2011,Melbourne (CBD),Information Media and Telecommunications,Small business,130,860,FALSE
+2011,Melbourne (CBD),Manufacturing,Medium business,6,445,FALSE
+2011,Melbourne (CBD),Manufacturing,Small business,273,867,FALSE
+2011,Melbourne (CBD),Mining,Medium business,7,732,FALSE
+2011,Melbourne (CBD),Mining,Small business,39,271,FALSE
+2011,Melbourne (CBD),Other Services,Medium business,33,1777,FALSE
+2011,Melbourne (CBD),Other Services,Small business,661,2839,FALSE
+2011,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,289,14723,FALSE
+2011,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1382,8170,FALSE
+2011,Melbourne (CBD),Public Administration and Safety,Medium business,83,6943,FALSE
+2011,Melbourne (CBD),Public Administration and Safety,Small business,57,454,FALSE
+2011,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,28,1466,FALSE
+2011,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,164,969,FALSE
+2011,Melbourne (CBD),Retail Trade,Medium business,68,3029,FALSE
+2011,Melbourne (CBD),Retail Trade,Small business,1514,7476,FALSE
+2011,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,26,1650,FALSE
+2011,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,53,418,FALSE
+2011,Melbourne (CBD),Wholesale Trade,Medium business,11,350,FALSE
+2011,Melbourne (CBD),Wholesale Trade,Small business,103,454,FALSE
+2012,Melbourne (CBD),Accommodation and Food Services,Medium business,232,9086,FALSE
+2012,Melbourne (CBD),Accommodation and Food Services,Small business,1298,9779,FALSE
+2012,Melbourne (CBD),Administrative and Support Services,Medium business,93,4564,FALSE
+2012,Melbourne (CBD),Administrative and Support Services,Small business,406,2408,FALSE
+2012,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,1,NA,TRUE
+2012,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,3,16,FALSE
+2012,Melbourne (CBD),Arts and Recreation Services,Medium business,26,1534,FALSE
+2012,Melbourne (CBD),Arts and Recreation Services,Small business,110,553,FALSE
+2012,Melbourne (CBD),Construction,Medium business,17,753,FALSE
+2012,Melbourne (CBD),Construction,Small business,68,467,FALSE
+2012,Melbourne (CBD),Education and Training,Medium business,95,6160,FALSE
+2012,Melbourne (CBD),Education and Training,Small business,173,1211,FALSE
+2012,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,13,960,FALSE
+2012,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,7,82,FALSE
+2012,Melbourne (CBD),Financial and Insurance Services,Medium business,148,9247,FALSE
+2012,Melbourne (CBD),Financial and Insurance Services,Small business,518,3383,FALSE
+2012,Melbourne (CBD),Health Care and Social Assistance,Medium business,41,1779,FALSE
+2012,Melbourne (CBD),Health Care and Social Assistance,Small business,342,1761,FALSE
+2012,Melbourne (CBD),Information Media and Telecommunications,Medium business,38,2154,FALSE
+2012,Melbourne (CBD),Information Media and Telecommunications,Small business,114,745,FALSE
+2012,Melbourne (CBD),Manufacturing,Medium business,6,445,FALSE
+2012,Melbourne (CBD),Manufacturing,Small business,261,842,FALSE
+2012,Melbourne (CBD),Mining,Medium business,8,622,FALSE
+2012,Melbourne (CBD),Mining,Small business,38,259,FALSE
+2012,Melbourne (CBD),Other Services,Medium business,35,1919,FALSE
+2012,Melbourne (CBD),Other Services,Small business,699,3049,FALSE
+2012,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,306,15772,FALSE
+2012,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1428,8641,FALSE
+2012,Melbourne (CBD),Public Administration and Safety,Medium business,81,6768,FALSE
+2012,Melbourne (CBD),Public Administration and Safety,Small business,55,443,FALSE
+2012,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,25,1347,FALSE
+2012,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,164,992,FALSE
+2012,Melbourne (CBD),Retail Trade,Medium business,70,2977,FALSE
+2012,Melbourne (CBD),Retail Trade,Small business,1473,7312,FALSE
+2012,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,28,1816,FALSE
+2012,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,55,414,FALSE
+2012,Melbourne (CBD),Wholesale Trade,Medium business,12,385,FALSE
+2012,Melbourne (CBD),Wholesale Trade,Small business,101,438,FALSE
+2013,Melbourne (CBD),Accommodation and Food Services,Medium business,242,9407,FALSE
+2013,Melbourne (CBD),Accommodation and Food Services,Small business,1353,10081,FALSE
+2013,Melbourne (CBD),Administrative and Support Services,Medium business,81,4135,FALSE
+2013,Melbourne (CBD),Administrative and Support Services,Small business,405,2537,FALSE
+2013,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,1,NA,TRUE
+2013,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,3,21,FALSE
+2013,Melbourne (CBD),Arts and Recreation Services,Medium business,28,1914,FALSE
+2013,Melbourne (CBD),Arts and Recreation Services,Small business,109,561,FALSE
+2013,Melbourne (CBD),Construction,Medium business,16,767,FALSE
+2013,Melbourne (CBD),Construction,Small business,77,530,FALSE
+2013,Melbourne (CBD),Education and Training,Medium business,95,5730,FALSE
+2013,Melbourne (CBD),Education and Training,Small business,173,1227,FALSE
+2013,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,8,550,FALSE
+2013,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,8,65,FALSE
+2013,Melbourne (CBD),Financial and Insurance Services,Medium business,147,8790,FALSE
+2013,Melbourne (CBD),Financial and Insurance Services,Small business,533,3414,FALSE
+2013,Melbourne (CBD),Health Care and Social Assistance,Medium business,40,1645,FALSE
+2013,Melbourne (CBD),Health Care and Social Assistance,Small business,356,1911,FALSE
+2013,Melbourne (CBD),Information Media and Telecommunications,Medium business,38,1904,FALSE
+2013,Melbourne (CBD),Information Media and Telecommunications,Small business,93,606,FALSE
+2013,Melbourne (CBD),Manufacturing,Medium business,5,232,FALSE
+2013,Melbourne (CBD),Manufacturing,Small business,256,834,FALSE
+2013,Melbourne (CBD),Mining,Medium business,9,489,FALSE
+2013,Melbourne (CBD),Mining,Small business,35,202,FALSE
+2013,Melbourne (CBD),Other Services,Medium business,35,1572,FALSE
+2013,Melbourne (CBD),Other Services,Small business,715,3064,FALSE
+2013,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,337,17527,FALSE
+2013,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1444,8780,FALSE
+2013,Melbourne (CBD),Public Administration and Safety,Medium business,75,5739,FALSE
+2013,Melbourne (CBD),Public Administration and Safety,Small business,54,397,FALSE
+2013,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,30,1603,FALSE
+2013,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,158,956,FALSE
+2013,Melbourne (CBD),Retail Trade,Medium business,67,2672,FALSE
+2013,Melbourne (CBD),Retail Trade,Small business,1463,7238,FALSE
+2013,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,23,1334,FALSE
+2013,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,59,413,FALSE
+2013,Melbourne (CBD),Wholesale Trade,Medium business,8,276,FALSE
+2013,Melbourne (CBD),Wholesale Trade,Small business,104,469,FALSE
+2014,Melbourne (CBD),Accommodation and Food Services,Medium business,246,9818,FALSE
+2014,Melbourne (CBD),Accommodation and Food Services,Small business,1408,10567,FALSE
+2014,Melbourne (CBD),Administrative and Support Services,Medium business,78,3880,FALSE
+2014,Melbourne (CBD),Administrative and Support Services,Small business,378,2421,FALSE
+2014,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,1,NA,TRUE
+2014,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,3,21,FALSE
+2014,Melbourne (CBD),Arts and Recreation Services,Medium business,27,1689,FALSE
+2014,Melbourne (CBD),Arts and Recreation Services,Small business,110,566,FALSE
+2014,Melbourne (CBD),Construction,Medium business,14,598,FALSE
+2014,Melbourne (CBD),Construction,Small business,68,449,FALSE
+2014,Melbourne (CBD),Education and Training,Medium business,96,5795,FALSE
+2014,Melbourne (CBD),Education and Training,Small business,172,1185,FALSE
+2014,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,8,492,FALSE
+2014,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,5,31,FALSE
+2014,Melbourne (CBD),Financial and Insurance Services,Medium business,155,9737,FALSE
+2014,Melbourne (CBD),Financial and Insurance Services,Small business,514,3412,FALSE
+2014,Melbourne (CBD),Health Care and Social Assistance,Medium business,41,1798,FALSE
+2014,Melbourne (CBD),Health Care and Social Assistance,Small business,361,1919,FALSE
+2014,Melbourne (CBD),Information Media and Telecommunications,Medium business,37,2146,FALSE
+2014,Melbourne (CBD),Information Media and Telecommunications,Small business,78,541,FALSE
+2014,Melbourne (CBD),Manufacturing,Medium business,5,232,FALSE
+2014,Melbourne (CBD),Manufacturing,Small business,239,802,FALSE
+2014,Melbourne (CBD),Mining,Medium business,9,465,FALSE
+2014,Melbourne (CBD),Mining,Small business,36,226,FALSE
+2014,Melbourne (CBD),Other Services,Medium business,38,1633,FALSE
+2014,Melbourne (CBD),Other Services,Small business,749,3235,FALSE
+2014,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,350,18224,FALSE
+2014,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1413,8568,FALSE
+2014,Melbourne (CBD),Public Administration and Safety,Medium business,74,5833,FALSE
+2014,Melbourne (CBD),Public Administration and Safety,Small business,55,411,FALSE
+2014,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,31,1734,FALSE
+2014,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,160,971,FALSE
+2014,Melbourne (CBD),Retail Trade,Medium business,70,3126,FALSE
+2014,Melbourne (CBD),Retail Trade,Small business,1487,7696,FALSE
+2014,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,23,1421,FALSE
+2014,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,57,425,FALSE
+2014,Melbourne (CBD),Wholesale Trade,Medium business,5,194,FALSE
+2014,Melbourne (CBD),Wholesale Trade,Small business,106,522,FALSE
+2015,Melbourne (CBD),Accommodation and Food Services,Medium business,245,9714,FALSE
+2015,Melbourne (CBD),Accommodation and Food Services,Small business,1440,11062,FALSE
+2015,Melbourne (CBD),Administrative and Support Services,Medium business,82,4325,FALSE
+2015,Melbourne (CBD),Administrative and Support Services,Small business,341,2140,FALSE
+2015,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,5,29,FALSE
+2015,Melbourne (CBD),Arts and Recreation Services,Medium business,26,1516,FALSE
+2015,Melbourne (CBD),Arts and Recreation Services,Small business,109,542,FALSE
+2015,Melbourne (CBD),Construction,Medium business,20,709,FALSE
+2015,Melbourne (CBD),Construction,Small business,65,437,FALSE
+2015,Melbourne (CBD),Education and Training,Medium business,107,6325,FALSE
+2015,Melbourne (CBD),Education and Training,Small business,176,1210,FALSE
+2015,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,8,328,FALSE
+2015,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,7,31,FALSE
+2015,Melbourne (CBD),Financial and Insurance Services,Medium business,147,9594,FALSE
+2015,Melbourne (CBD),Financial and Insurance Services,Small business,491,3368,FALSE
+2015,Melbourne (CBD),Health Care and Social Assistance,Medium business,40,1704,FALSE
+2015,Melbourne (CBD),Health Care and Social Assistance,Small business,365,1979,FALSE
+2015,Melbourne (CBD),Information Media and Telecommunications,Medium business,39,2305,FALSE
+2015,Melbourne (CBD),Information Media and Telecommunications,Small business,72,551,FALSE
+2015,Melbourne (CBD),Manufacturing,Medium business,6,296,FALSE
+2015,Melbourne (CBD),Manufacturing,Small business,241,855,FALSE
+2015,Melbourne (CBD),Mining,Medium business,8,407,FALSE
+2015,Melbourne (CBD),Mining,Small business,32,211,FALSE
+2015,Melbourne (CBD),Other Services,Medium business,44,1943,FALSE
+2015,Melbourne (CBD),Other Services,Small business,760,3381,FALSE
+2015,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,366,18663,FALSE
+2015,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1422,8838,FALSE
+2015,Melbourne (CBD),Public Administration and Safety,Medium business,77,6462,FALSE
+2015,Melbourne (CBD),Public Administration and Safety,Small business,50,391,FALSE
+2015,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,35,1936,FALSE
+2015,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,168,1036,FALSE
+2015,Melbourne (CBD),Retail Trade,Medium business,74,3196,FALSE
+2015,Melbourne (CBD),Retail Trade,Small business,1451,7620,FALSE
+2015,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,23,1286,FALSE
+2015,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,53,376,FALSE
+2015,Melbourne (CBD),Wholesale Trade,Medium business,7,353,FALSE
+2015,Melbourne (CBD),Wholesale Trade,Small business,105,502,FALSE
+2016,Melbourne (CBD),Accommodation and Food Services,Medium business,260,10366,FALSE
+2016,Melbourne (CBD),Accommodation and Food Services,Small business,1464,11417,FALSE
+2016,Melbourne (CBD),Administrative and Support Services,Medium business,78,4358,FALSE
+2016,Melbourne (CBD),Administrative and Support Services,Small business,343,2217,FALSE
+2016,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,5,30,FALSE
+2016,Melbourne (CBD),Arts and Recreation Services,Medium business,27,1673,FALSE
+2016,Melbourne (CBD),Arts and Recreation Services,Small business,120,606,FALSE
+2016,Melbourne (CBD),Construction,Medium business,22,760,FALSE
+2016,Melbourne (CBD),Construction,Small business,73,513,FALSE
+2016,Melbourne (CBD),Education and Training,Medium business,114,6591,FALSE
+2016,Melbourne (CBD),Education and Training,Small business,194,1343,FALSE
+2016,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,8,342,FALSE
+2016,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,10,56,FALSE
+2016,Melbourne (CBD),Financial and Insurance Services,Medium business,153,9797,FALSE
+2016,Melbourne (CBD),Financial and Insurance Services,Small business,525,3545,FALSE
+2016,Melbourne (CBD),Health Care and Social Assistance,Medium business,40,1747,FALSE
+2016,Melbourne (CBD),Health Care and Social Assistance,Small business,374,2035,FALSE
+2016,Melbourne (CBD),Information Media and Telecommunications,Medium business,41,2105,FALSE
+2016,Melbourne (CBD),Information Media and Telecommunications,Small business,64,525,FALSE
+2016,Melbourne (CBD),Manufacturing,Medium business,6,296,FALSE
+2016,Melbourne (CBD),Manufacturing,Small business,234,831,FALSE
+2016,Melbourne (CBD),Mining,Medium business,8,449,FALSE
+2016,Melbourne (CBD),Mining,Small business,27,176,FALSE
+2016,Melbourne (CBD),Other Services,Medium business,48,2167,FALSE
+2016,Melbourne (CBD),Other Services,Small business,815,3686,FALSE
+2016,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,371,19269,FALSE
+2016,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1403,8857,FALSE
+2016,Melbourne (CBD),Public Administration and Safety,Medium business,77,6517,FALSE
+2016,Melbourne (CBD),Public Administration and Safety,Small business,49,377,FALSE
+2016,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,37,1919,FALSE
+2016,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,181,1120,FALSE
+2016,Melbourne (CBD),Retail Trade,Medium business,86,3616,FALSE
+2016,Melbourne (CBD),Retail Trade,Small business,1442,7875,FALSE
+2016,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,22,1264,FALSE
+2016,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,56,405,FALSE
+2016,Melbourne (CBD),Wholesale Trade,Medium business,9,396,FALSE
+2016,Melbourne (CBD),Wholesale Trade,Small business,106,485,FALSE
+2017,Melbourne (CBD),Accommodation and Food Services,Medium business,277,11130,FALSE
+2017,Melbourne (CBD),Accommodation and Food Services,Small business,1469,11484,FALSE
+2017,Melbourne (CBD),Administrative and Support Services,Medium business,85,4839,FALSE
+2017,Melbourne (CBD),Administrative and Support Services,Small business,315,2101,FALSE
+2017,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,3,235,FALSE
+2017,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,3,10,FALSE
+2017,Melbourne (CBD),Arts and Recreation Services,Medium business,28,1845,FALSE
+2017,Melbourne (CBD),Arts and Recreation Services,Small business,126,629,FALSE
+2017,Melbourne (CBD),Construction,Medium business,23,984,FALSE
+2017,Melbourne (CBD),Construction,Small business,91,637,FALSE
+2017,Melbourne (CBD),Education and Training,Medium business,107,6170,FALSE
+2017,Melbourne (CBD),Education and Training,Small business,212,1540,FALSE
+2017,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,10,538,FALSE
+2017,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,10,70,FALSE
+2017,Melbourne (CBD),Financial and Insurance Services,Medium business,163,10038,FALSE
+2017,Melbourne (CBD),Financial and Insurance Services,Small business,541,3669,FALSE
+2017,Melbourne (CBD),Health Care and Social Assistance,Medium business,45,1972,FALSE
+2017,Melbourne (CBD),Health Care and Social Assistance,Small business,365,2014,FALSE
+2017,Melbourne (CBD),Information Media and Telecommunications,Medium business,37,2239,FALSE
+2017,Melbourne (CBD),Information Media and Telecommunications,Small business,73,531,FALSE
+2017,Melbourne (CBD),Manufacturing,Medium business,5,228,FALSE
+2017,Melbourne (CBD),Manufacturing,Small business,233,811,FALSE
+2017,Melbourne (CBD),Mining,Medium business,6,236,FALSE
+2017,Melbourne (CBD),Mining,Small business,25,152,FALSE
+2017,Melbourne (CBD),Other Services,Medium business,50,2213,FALSE
+2017,Melbourne (CBD),Other Services,Small business,820,3720,FALSE
+2017,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,426,22631,FALSE
+2017,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1427,9145,FALSE
+2017,Melbourne (CBD),Public Administration and Safety,Medium business,72,5928,FALSE
+2017,Melbourne (CBD),Public Administration and Safety,Small business,62,486,FALSE
+2017,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,45,2370,FALSE
+2017,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,210,1312,FALSE
+2017,Melbourne (CBD),Retail Trade,Medium business,91,3811,FALSE
+2017,Melbourne (CBD),Retail Trade,Small business,1421,7815,FALSE
+2017,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,22,1223,FALSE
+2017,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,58,379,FALSE
+2017,Melbourne (CBD),Wholesale Trade,Medium business,7,293,FALSE
+2017,Melbourne (CBD),Wholesale Trade,Small business,117,546,FALSE
+2018,Melbourne (CBD),Accommodation and Food Services,Medium business,284,11753,FALSE
+2018,Melbourne (CBD),Accommodation and Food Services,Small business,1500,11681,FALSE
+2018,Melbourne (CBD),Administrative and Support Services,Medium business,92,5191,FALSE
+2018,Melbourne (CBD),Administrative and Support Services,Small business,299,2075,FALSE
+2018,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,2,NA,TRUE
+2018,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,4,10,FALSE
+2018,Melbourne (CBD),Arts and Recreation Services,Medium business,30,1790,FALSE
+2018,Melbourne (CBD),Arts and Recreation Services,Small business,125,669,FALSE
+2018,Melbourne (CBD),Construction,Medium business,29,1143,FALSE
+2018,Melbourne (CBD),Construction,Small business,97,688,FALSE
+2018,Melbourne (CBD),Education and Training,Medium business,111,6307,FALSE
+2018,Melbourne (CBD),Education and Training,Small business,229,1799,FALSE
+2018,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,8,398,FALSE
+2018,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,9,63,FALSE
+2018,Melbourne (CBD),Financial and Insurance Services,Medium business,171,10438,FALSE
+2018,Melbourne (CBD),Financial and Insurance Services,Small business,549,3716,FALSE
+2018,Melbourne (CBD),Health Care and Social Assistance,Medium business,46,1948,FALSE
+2018,Melbourne (CBD),Health Care and Social Assistance,Small business,360,2014,FALSE
+2018,Melbourne (CBD),Information Media and Telecommunications,Medium business,36,2196,FALSE
+2018,Melbourne (CBD),Information Media and Telecommunications,Small business,66,485,FALSE
+2018,Melbourne (CBD),Manufacturing,Medium business,6,263,FALSE
+2018,Melbourne (CBD),Manufacturing,Small business,221,763,FALSE
+2018,Melbourne (CBD),Mining,Medium business,7,216,FALSE
+2018,Melbourne (CBD),Mining,Small business,25,161,FALSE
+2018,Melbourne (CBD),Other Services,Medium business,55,2478,FALSE
+2018,Melbourne (CBD),Other Services,Small business,868,3952,FALSE
+2018,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,431,22534,FALSE
+2018,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1391,9186,FALSE
+2018,Melbourne (CBD),Public Administration and Safety,Medium business,73,5843,FALSE
+2018,Melbourne (CBD),Public Administration and Safety,Small business,66,533,FALSE
+2018,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,47,2756,FALSE
+2018,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,205,1289,FALSE
+2018,Melbourne (CBD),Retail Trade,Medium business,95,4265,FALSE
+2018,Melbourne (CBD),Retail Trade,Small business,1355,7753,FALSE
+2018,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,22,1217,FALSE
+2018,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,57,375,FALSE
+2018,Melbourne (CBD),Wholesale Trade,Medium business,7,298,FALSE
+2018,Melbourne (CBD),Wholesale Trade,Small business,110,507,FALSE
+2019,Melbourne (CBD),Accommodation and Food Services,Medium business,284,12058,FALSE
+2019,Melbourne (CBD),Accommodation and Food Services,Small business,1538,12175,FALSE
+2019,Melbourne (CBD),Administrative and Support Services,Medium business,96,5474,FALSE
+2019,Melbourne (CBD),Administrative and Support Services,Small business,285,2045,FALSE
+2019,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,1,NA,TRUE
+2019,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,7,24,FALSE
+2019,Melbourne (CBD),Arts and Recreation Services,Medium business,28,1615,FALSE
+2019,Melbourne (CBD),Arts and Recreation Services,Small business,127,695,FALSE
+2019,Melbourne (CBD),Construction,Medium business,37,1490,FALSE
+2019,Melbourne (CBD),Construction,Small business,104,780,FALSE
+2019,Melbourne (CBD),Education and Training,Medium business,116,7134,FALSE
+2019,Melbourne (CBD),Education and Training,Small business,241,2020,FALSE
+2019,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,9,409,FALSE
+2019,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,12,94,FALSE
+2019,Melbourne (CBD),Financial and Insurance Services,Medium business,180,10530,FALSE
+2019,Melbourne (CBD),Financial and Insurance Services,Small business,539,3646,FALSE
+2019,Melbourne (CBD),Health Care and Social Assistance,Medium business,49,2009,FALSE
+2019,Melbourne (CBD),Health Care and Social Assistance,Small business,356,2130,FALSE
+2019,Melbourne (CBD),Information Media and Telecommunications,Medium business,34,1757,FALSE
+2019,Melbourne (CBD),Information Media and Telecommunications,Small business,56,429,FALSE
+2019,Melbourne (CBD),Manufacturing,Medium business,9,615,FALSE
+2019,Melbourne (CBD),Manufacturing,Small business,216,747,FALSE
+2019,Melbourne (CBD),Mining,Medium business,5,172,FALSE
+2019,Melbourne (CBD),Mining,Small business,24,152,FALSE
+2019,Melbourne (CBD),Other Services,Medium business,53,2457,FALSE
+2019,Melbourne (CBD),Other Services,Small business,860,3971,FALSE
+2019,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,483,25589,FALSE
+2019,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1305,9082,FALSE
+2019,Melbourne (CBD),Public Administration and Safety,Medium business,89,7276,FALSE
+2019,Melbourne (CBD),Public Administration and Safety,Small business,66,582,FALSE
+2019,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,60,3718,FALSE
+2019,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,193,1239,FALSE
+2019,Melbourne (CBD),Retail Trade,Medium business,93,4250,FALSE
+2019,Melbourne (CBD),Retail Trade,Small business,1340,7694,FALSE
+2019,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,21,1218,FALSE
+2019,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,54,357,FALSE
+2019,Melbourne (CBD),Wholesale Trade,Medium business,5,111,FALSE
+2019,Melbourne (CBD),Wholesale Trade,Small business,104,484,FALSE
+2020,Melbourne (CBD),Accommodation and Food Services,Medium business,212,8637,FALSE
+2020,Melbourne (CBD),Accommodation and Food Services,Small business,1480,10975,FALSE
+2020,Melbourne (CBD),Administrative and Support Services,Medium business,84,4765,FALSE
+2020,Melbourne (CBD),Administrative and Support Services,Small business,227,1676,FALSE
+2020,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,1,NA,TRUE
+2020,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,6,20,FALSE
+2020,Melbourne (CBD),Arts and Recreation Services,Medium business,32,1735,FALSE
+2020,Melbourne (CBD),Arts and Recreation Services,Small business,97,514,FALSE
+2020,Melbourne (CBD),Construction,Medium business,35,1549,FALSE
+2020,Melbourne (CBD),Construction,Small business,87,630,FALSE
+2020,Melbourne (CBD),Education and Training,Medium business,106,6366,FALSE
+2020,Melbourne (CBD),Education and Training,Small business,206,1748,FALSE
+2020,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,8,341,FALSE
+2020,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,11,70,FALSE
+2020,Melbourne (CBD),Financial and Insurance Services,Medium business,171,9785,FALSE
+2020,Melbourne (CBD),Financial and Insurance Services,Small business,443,2976,FALSE
+2020,Melbourne (CBD),Health Care and Social Assistance,Medium business,43,2000,FALSE
+2020,Melbourne (CBD),Health Care and Social Assistance,Small business,306,1935,FALSE
+2020,Melbourne (CBD),Information Media and Telecommunications,Medium business,31,1653,FALSE
+2020,Melbourne (CBD),Information Media and Telecommunications,Small business,42,305,FALSE
+2020,Melbourne (CBD),Manufacturing,Medium business,8,551,FALSE
+2020,Melbourne (CBD),Manufacturing,Small business,183,601,FALSE
+2020,Melbourne (CBD),Mining,Medium business,4,152,FALSE
+2020,Melbourne (CBD),Mining,Small business,21,140,FALSE
+2020,Melbourne (CBD),Other Services,Medium business,55,2415,FALSE
+2020,Melbourne (CBD),Other Services,Small business,770,3447,FALSE
+2020,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,448,23288,FALSE
+2020,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1103,7942,FALSE
+2020,Melbourne (CBD),Public Administration and Safety,Medium business,85,7107,FALSE
+2020,Melbourne (CBD),Public Administration and Safety,Small business,58,487,FALSE
+2020,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,49,3149,FALSE
+2020,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,162,1085,FALSE
+2020,Melbourne (CBD),Retail Trade,Medium business,67,2866,FALSE
+2020,Melbourne (CBD),Retail Trade,Small business,1051,5596,FALSE
+2020,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,19,1157,FALSE
+2020,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,51,329,FALSE
+2020,Melbourne (CBD),Wholesale Trade,Medium business,3,69,FALSE
+2020,Melbourne (CBD),Wholesale Trade,Small business,92,457,FALSE
+2021,Melbourne (CBD),Accommodation and Food Services,Medium business,235,9363,FALSE
+2021,Melbourne (CBD),Accommodation and Food Services,Small business,1446,10067,FALSE
+2021,Melbourne (CBD),Administrative and Support Services,Medium business,83,4703,FALSE
+2021,Melbourne (CBD),Administrative and Support Services,Small business,216,1508,FALSE
+2021,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,1,NA,TRUE
+2021,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,3,3,FALSE
+2021,Melbourne (CBD),Arts and Recreation Services,Medium business,33,1717,FALSE
+2021,Melbourne (CBD),Arts and Recreation Services,Small business,98,474,FALSE
+2021,Melbourne (CBD),Construction,Medium business,39,1908,FALSE
+2021,Melbourne (CBD),Construction,Small business,77,552,FALSE
+2021,Melbourne (CBD),Education and Training,Medium business,105,6580,FALSE
+2021,Melbourne (CBD),Education and Training,Small business,203,1743,FALSE
+2021,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,6,281,FALSE
+2021,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,11,64,FALSE
+2021,Melbourne (CBD),Financial and Insurance Services,Medium business,173,9991,FALSE
+2021,Melbourne (CBD),Financial and Insurance Services,Small business,434,2969,FALSE
+2021,Melbourne (CBD),Health Care and Social Assistance,Medium business,45,2072,FALSE
+2021,Melbourne (CBD),Health Care and Social Assistance,Small business,304,1884,FALSE
+2021,Melbourne (CBD),Information Media and Telecommunications,Medium business,37,1838,FALSE
+2021,Melbourne (CBD),Information Media and Telecommunications,Small business,39,270,FALSE
+2021,Melbourne (CBD),Manufacturing,Medium business,8,475,FALSE
+2021,Melbourne (CBD),Manufacturing,Small business,184,564,FALSE
+2021,Melbourne (CBD),Mining,Medium business,5,207,FALSE
+2021,Melbourne (CBD),Mining,Small business,16,120,FALSE
+2021,Melbourne (CBD),Other Services,Medium business,54,2299,FALSE
+2021,Melbourne (CBD),Other Services,Small business,758,3344,FALSE
+2021,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,439,23688,FALSE
+2021,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,1027,7255,FALSE
+2021,Melbourne (CBD),Public Administration and Safety,Medium business,73,6307,FALSE
+2021,Melbourne (CBD),Public Administration and Safety,Small business,56,487,FALSE
+2021,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,51,3316,FALSE
+2021,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,158,1039,FALSE
+2021,Melbourne (CBD),Retail Trade,Medium business,74,3258,FALSE
+2021,Melbourne (CBD),Retail Trade,Small business,1057,5725,FALSE
+2021,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,16,702,FALSE
+2021,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,43,279,FALSE
+2021,Melbourne (CBD),Wholesale Trade,Medium business,2,NA,TRUE
+2021,Melbourne (CBD),Wholesale Trade,Small business,91,453,FALSE
+2022,Melbourne (CBD),Accommodation and Food Services,Medium business,256,11077,FALSE
+2022,Melbourne (CBD),Accommodation and Food Services,Small business,1301,9579,FALSE
+2022,Melbourne (CBD),Administrative and Support Services,Medium business,67,3698,FALSE
+2022,Melbourne (CBD),Administrative and Support Services,Small business,176,1316,FALSE
+2022,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,1,NA,TRUE
+2022,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,2,NA,TRUE
+2022,Melbourne (CBD),Arts and Recreation Services,Medium business,36,1896,FALSE
+2022,Melbourne (CBD),Arts and Recreation Services,Small business,82,447,FALSE
+2022,Melbourne (CBD),Construction,Medium business,37,1712,FALSE
+2022,Melbourne (CBD),Construction,Small business,74,591,FALSE
+2022,Melbourne (CBD),Education and Training,Medium business,96,5906,FALSE
+2022,Melbourne (CBD),Education and Training,Small business,203,1681,FALSE
+2022,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,14,798,FALSE
+2022,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,15,127,FALSE
+2022,Melbourne (CBD),Financial and Insurance Services,Medium business,177,9958,FALSE
+2022,Melbourne (CBD),Financial and Insurance Services,Small business,377,2777,FALSE
+2022,Melbourne (CBD),Health Care and Social Assistance,Medium business,54,2633,FALSE
+2022,Melbourne (CBD),Health Care and Social Assistance,Small business,292,1730,FALSE
+2022,Melbourne (CBD),Information Media and Telecommunications,Medium business,33,1919,FALSE
+2022,Melbourne (CBD),Information Media and Telecommunications,Small business,39,330,FALSE
+2022,Melbourne (CBD),Manufacturing,Medium business,12,745,FALSE
+2022,Melbourne (CBD),Manufacturing,Small business,182,539,FALSE
+2022,Melbourne (CBD),Mining,Medium business,8,550,FALSE
+2022,Melbourne (CBD),Mining,Small business,16,113,FALSE
+2022,Melbourne (CBD),Other Services,Medium business,52,2302,FALSE
+2022,Melbourne (CBD),Other Services,Small business,684,3189,FALSE
+2022,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,455,24807,FALSE
+2022,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,928,6839,FALSE
+2022,Melbourne (CBD),Public Administration and Safety,Medium business,79,6674,FALSE
+2022,Melbourne (CBD),Public Administration and Safety,Small business,51,462,FALSE
+2022,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,50,3278,FALSE
+2022,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,148,912,FALSE
+2022,Melbourne (CBD),Retail Trade,Medium business,83,3610,FALSE
+2022,Melbourne (CBD),Retail Trade,Small business,1015,5620,FALSE
+2022,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,14,485,FALSE
+2022,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,40,336,FALSE
+2022,Melbourne (CBD),Wholesale Trade,Medium business,5,315,FALSE
+2022,Melbourne (CBD),Wholesale Trade,Small business,86,401,FALSE
+2023,Melbourne (CBD),Accommodation and Food Services,Medium business,256,11077,FALSE
+2023,Melbourne (CBD),Accommodation and Food Services,Small business,1301,9579,FALSE
+2023,Melbourne (CBD),Administrative and Support Services,Medium business,67,3698,FALSE
+2023,Melbourne (CBD),Administrative and Support Services,Small business,176,1316,FALSE
+2023,Melbourne (CBD),"Agriculture, Forestry and Fishing",Medium business,1,NA,TRUE
+2023,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,2,NA,TRUE
+2023,Melbourne (CBD),Arts and Recreation Services,Medium business,36,1896,FALSE
+2023,Melbourne (CBD),Arts and Recreation Services,Small business,82,447,FALSE
+2023,Melbourne (CBD),Construction,Medium business,37,1712,FALSE
+2023,Melbourne (CBD),Construction,Small business,74,591,FALSE
+2023,Melbourne (CBD),Education and Training,Medium business,96,5906,FALSE
+2023,Melbourne (CBD),Education and Training,Small business,203,1681,FALSE
+2023,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,14,798,FALSE
+2023,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,15,127,FALSE
+2023,Melbourne (CBD),Financial and Insurance Services,Medium business,177,9958,FALSE
+2023,Melbourne (CBD),Financial and Insurance Services,Small business,377,2777,FALSE
+2023,Melbourne (CBD),Health Care and Social Assistance,Medium business,54,2633,FALSE
+2023,Melbourne (CBD),Health Care and Social Assistance,Small business,292,1730,FALSE
+2023,Melbourne (CBD),Information Media and Telecommunications,Medium business,33,1919,FALSE
+2023,Melbourne (CBD),Information Media and Telecommunications,Small business,39,330,FALSE
+2023,Melbourne (CBD),Manufacturing,Medium business,12,745,FALSE
+2023,Melbourne (CBD),Manufacturing,Small business,182,539,FALSE
+2023,Melbourne (CBD),Mining,Medium business,8,550,FALSE
+2023,Melbourne (CBD),Mining,Small business,16,113,FALSE
+2023,Melbourne (CBD),Other Services,Medium business,52,2302,FALSE
+2023,Melbourne (CBD),Other Services,Small business,684,3189,FALSE
+2023,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,455,24807,FALSE
+2023,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,928,6839,FALSE
+2023,Melbourne (CBD),Public Administration and Safety,Medium business,79,6674,FALSE
+2023,Melbourne (CBD),Public Administration and Safety,Small business,51,462,FALSE
+2023,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,50,3278,FALSE
+2023,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,148,912,FALSE
+2023,Melbourne (CBD),Retail Trade,Medium business,83,3610,FALSE
+2023,Melbourne (CBD),Retail Trade,Small business,1015,5620,FALSE
+2023,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,14,485,FALSE
+2023,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,40,336,FALSE
+2023,Melbourne (CBD),Wholesale Trade,Medium business,5,315,FALSE
+2023,Melbourne (CBD),Wholesale Trade,Small business,86,401,FALSE
+2024,Melbourne (CBD),Accommodation and Food Services,Medium business,316,13214,FALSE
+2024,Melbourne (CBD),Accommodation and Food Services,Small business,1421,10719,FALSE
+2024,Melbourne (CBD),Administrative and Support Services,Medium business,69,3701,FALSE
+2024,Melbourne (CBD),Administrative and Support Services,Small business,150,1206,FALSE
+2024,Melbourne (CBD),"Agriculture, Forestry and Fishing",Small business,2,NA,TRUE
+2024,Melbourne (CBD),Arts and Recreation Services,Medium business,34,1857,FALSE
+2024,Melbourne (CBD),Arts and Recreation Services,Small business,97,487,FALSE
+2024,Melbourne (CBD),Construction,Medium business,37,1794,FALSE
+2024,Melbourne (CBD),Construction,Small business,59,498,FALSE
+2024,Melbourne (CBD),Education and Training,Medium business,102,6185,FALSE
+2024,Melbourne (CBD),Education and Training,Small business,247,1967,FALSE
+2024,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Medium business,16,948,FALSE
+2024,Melbourne (CBD),"Electricity, Gas, Water and Waste Services",Small business,14,127,FALSE
+2024,Melbourne (CBD),Financial and Insurance Services,Medium business,199,10707,FALSE
+2024,Melbourne (CBD),Financial and Insurance Services,Small business,335,2580,FALSE
+2024,Melbourne (CBD),Health Care and Social Assistance,Medium business,52,2719,FALSE
+2024,Melbourne (CBD),Health Care and Social Assistance,Small business,291,1826,FALSE
+2024,Melbourne (CBD),Information Media and Telecommunications,Medium business,51,2465,FALSE
+2024,Melbourne (CBD),Information Media and Telecommunications,Small business,34,319,FALSE
+2024,Melbourne (CBD),Manufacturing,Medium business,10,409,FALSE
+2024,Melbourne (CBD),Manufacturing,Small business,192,582,FALSE
+2024,Melbourne (CBD),Mining,Medium business,8,686,FALSE
+2024,Melbourne (CBD),Mining,Small business,14,100,FALSE
+2024,Melbourne (CBD),Other Services,Medium business,55,2783,FALSE
+2024,Melbourne (CBD),Other Services,Small business,750,3552,FALSE
+2024,Melbourne (CBD),"Professional, Scientific and Technical Services",Medium business,461,25062,FALSE
+2024,Melbourne (CBD),"Professional, Scientific and Technical Services",Small business,877,6484,FALSE
+2024,Melbourne (CBD),Public Administration and Safety,Medium business,77,6324,FALSE
+2024,Melbourne (CBD),Public Administration and Safety,Small business,44,388,FALSE
+2024,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Medium business,49,2805,FALSE
+2024,Melbourne (CBD),"Rental, Hiring and Real Estate Services",Small business,149,986,FALSE
+2024,Melbourne (CBD),Retail Trade,Medium business,90,3977,FALSE
+2024,Melbourne (CBD),Retail Trade,Small business,1045,6124,FALSE
+2024,Melbourne (CBD),"Transport, Postal and Warehousing",Medium business,17,779,FALSE
+2024,Melbourne (CBD),"Transport, Postal and Warehousing",Small business,33,242,FALSE
+2024,Melbourne (CBD),Wholesale Trade,Medium business,7,381,FALSE
+2024,Melbourne (CBD),Wholesale Trade,Small business,81,409,FALSE
