@@ -27,4 +27,7 @@ business_address_clean <- read.csv(
 
 names(business_address_clean)
 
+business_address_clean <- business_address_clean %>%
+  select(-longitude, -latitude)
 
+names(business_address_clean)
