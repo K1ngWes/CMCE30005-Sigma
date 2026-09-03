@@ -138,6 +138,9 @@ year_summary
 
 ### VISUALISATION DS1
 ### Vis 1 for all 19 industries: SME establishment trends by industry 
+
+# already answers the descriptive question!!!
+
 library(ggplot2)
 ggplot(
   industry_trend,
@@ -238,3 +241,86 @@ ggsave(
   height = 8,
   dpi = 300
 )
+
+
+# check duplicates
+library(dplyr)
+
+sme_cbd %>%
+  count(Year, Industry, Business_size) %>%
+  filter(n > 1)
+
+# check impossible establishment values
+sum(sme_cbd$Total_establishments < 0, na.rm = TRUE)
+
+# check impossible job values
+sum(sme_cbd$Total_jobs < 0, na.rm = TRUE)
+
+
+
+
+### Model Application: Linear Regression (predictive for BQ1)
+
+# we dont apply LR model to every industry, only the ones we high total jobs and 
+# decreasing trends 
+
+library(dplyr)
+
+# E.G.1 Accomodation and Food Service
+
+food_data <- industry_trend %>%
+  filter(Industry == "Accommodation and Food Services")
+
+food_data # just to check the data
+
+food_model <- lm(                  # to fit the model
+  `Total establishments` ~ Year,
+  data = food_data
+)
+
+summary(food_model)                # inspect the result
+
+# INTERPRETATION:
+# Accommodation and Food Services shows a strong upward long-term trend in SME establishments, 
+# increasing by about 34 establishments per year on average. The model explains around 77% of 
+# the variation over time.
+
+# Graph for Linear Regression
+library(ggplot2)
+
+ggplot(
+  food_data,
+  aes(
+    x = Year,
+    y = `Total establishments`
+  )
+) +
+  geom_point(size = 2) +
+  geom_line() +
+  geom_smooth(
+    method = "lm",
+    se = FALSE,
+    linetype = "dashed"
+  ) +
+  labs(
+    title = "Accommodation and Food Services SME Trend",
+    subtitle = "Melbourne CBD, 2002–2024",
+    x = "Year",
+    y = "Total establishments"
+  ) +
+  theme_minimal()
+
+# save
+ggsave(
+  "LR1_AFS_Trend.png",
+  width = 12,
+  height = 8,
+  dpi = 300
+)
+
+
+
+
+
+
+
