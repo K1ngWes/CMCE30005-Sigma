@@ -1,10 +1,9 @@
 ## TERESA'S CHATGPT WORK FOR ADDRESS DATASET
-
 library(tidyverse)
 
-address_clean <- read_csv(
-  "~/Documents/cmce30005 bac/business-establishments-with-address-and-industry-classification.csv",
-  na = c("", "NA")
+business_address_clean <- read.csv(
+  "data/business-establishments-with-address-and-industry-classification.csv",
+  check.names = FALSE
 ) %>%
   # Keep only Melbourne CBD
   filter(clue_small_area == "Melbourne (CBD)") %>%
@@ -26,4 +25,9 @@ address_clean <- read_csv(
   # `point` duplicates longitude/latitude, so remove it
   select(-point)
 
+names(business_address_clean)
 
+business_address_clean <- business_address_clean %>%
+  select(-longitude, -latitude)
+
+names(business_address_clean)

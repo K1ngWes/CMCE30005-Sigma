@@ -1,8 +1,9 @@
 install.packages("ggplot2")
-
+install.packages("dplyr")
+library(dplyr)
 
 business_establishments_and_jobs <- read.csv(
-  "~/Desktop/BAC/business-establishments-and-jobs-data-by-business-size-and-anzsic.csv",
+  "data/business-establishments-and-jobs-data-by-business-size-and-anzsic.csv",
   check.names = FALSE
 )
 
@@ -99,6 +100,8 @@ industry_2024 %>%
     column_labels.border.bottom.style = "solid",
     table_body.hlines.style = "solid"
   )
+
+
 
 
 # Vis 1 for all 19 industries: SME establishment trends by industry 
