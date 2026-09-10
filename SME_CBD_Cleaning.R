@@ -1,5 +1,14 @@
-install.packages("ggplot2")
+# install.packages(
+#   c("ggplot2", "dplyr", "tidyr", "purrr", "broom", "gt")
+# )
 
+# Load required packages
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(broom)
+library(gt)
 
 business_establishments_and_jobs <- read.csv(
   "~/Desktop/BAC/business-establishments-and-jobs-data-by-business-size-and-anzsic.csv",
@@ -257,66 +266,250 @@ sum(sme_cbd$Total_establishments < 0, na.rm = TRUE)
 sum(sme_cbd$Total_jobs < 0, na.rm = TRUE)
 
 
+# -----------------------------------------------------------------------
 
 
-### Model Application: Linear Regression (predictive for BQ1)
-
-# we dont apply LR model to every industry, only the ones we high total jobs and 
-# decreasing trends 
+### RQ2: TIME-BASED TRAIN-TEST SPLIT
 
 library(dplyr)
 
-# E.G.1 Accomodation and Food Service
+# Training data: 2002–2012
+train_data <- industry_trend %>%
+  filter(Year >= 2002, Year <= 2012)
 
-food_data <- industry_trend %>%
-  filter(Industry == "Accommodation and Food Services")
+# Test data: 2013–2018
+test_data <- industry_trend %>%
+  filter(Year >= 2013, Year <= 2018)
 
-food_data # just to check the data
+# Check that the split is correct
+sort(unique(train_data$Year))
+sort(unique(test_data$Year))
 
-food_model <- lm(                  # to fit the model
-  `Total establishments` ~ Year,
-  data = food_data
-)
+# check
+range(train_data$Year)
+range(test_data$Year)
+range(test_predictions$Year)
 
-summary(food_model)                # inspect the result
 
-# INTERPRETATION:
-# Accommodation and Food Services shows a strong upward long-term trend in SME establishments, 
-# increasing by about 34 establishments per year on average. The model explains around 77% of 
-# the variation over time.
+### Model Application: Linear Regression (predictive for RQ2)
 
-# Graph for Linear Regression
-library(ggplot2)
-
-ggplot(
-  food_data,
-  aes(
-    x = Year,
-    y = `Total establishments`
+# Linear Regression for All Industries
+# Fit one separate regression model for each industry
+industry_models <- train_data %>%
+  group_by(Industry) %>%
+  nest() %>%
+  mutate(
+    model = map(
+      data,
+      ~ lm(`Total establishments` ~ Year, data = .x)
+    )
   )
-) +
-  geom_point(size = 2) +
-  geom_line() +
-  geom_smooth(
-    method = "lm",
-    se = FALSE,
+
+# Summaru table for all industries
+
+industry_model_summary <- industry_models %>%
+  mutate(
+    model_results = map(model, tidy),
+    model_fit = map(model, glance)
+  ) %>%
+  unnest(model_results) %>%
+  filter(term == "Year") %>%
+  select(
+    Industry,
+    Annual_change = estimate,
+    Std_error = std.error,
+    P_value = p.value
+  ) %>%
+  left_join(
+    industry_models %>%
+      mutate(model_fit = map(model, glance)) %>%
+      unnest(model_fit) %>%
+      select(Industry, R_squared = r.squared),
+    by = "Industry"
+  ) %>%
+  arrange(Annual_change)
+
+industry_model_summary
+
+
+### Graph for Linear Regression
+
+# predictions for every industry in the test set
+
+test_predictions <- industry_models %>%
+  select(Industry, model) %>%
+  left_join(test_data, by = "Industry") %>%
+  mutate(
+    Predicted_establishments = map2_dbl(
+      model,
+      Year,
+      ~ predict(.x, newdata = data.frame(Year = .y))
+    )
+  ) %>%
+  select(
+    Industry,
+    Year,
+    Actual_establishments = `Total establishments`,
+    Predicted_establishments
+  )
+
+test_predictions
+
+# display training obsevation
+
+p_lr <- ggplot() +
+  geom_line(
+    data = train_data,
+    aes(
+      x = Year,
+      y = `Total establishments`,
+      group = Industry
+    ),
+    colour = "black"
+  ) +
+  geom_point(
+    data = test_predictions,
+    aes(
+      x = Year,
+      y = Actual_establishments
+    ),
+    colour = "#E57373",
+    size = 2
+  ) +
+  geom_line(
+    data = test_predictions,
+    aes(
+      x = Year,
+      y = Predicted_establishments,
+      group = Industry
+    ),
+    colour = "#377EB8",
     linetype = "dashed"
   ) +
+  facet_wrap(
+    ~ Industry,
+    scales = "free_y",
+    ncol = 4
+  ) +
   labs(
-    title = "Accommodation and Food Services SME Trend",
-    subtitle = "Melbourne CBD, 2002–2024",
+    title = "Actual and Predicted SME Establishments by Industry",
+    subtitle = "Black: training data | Red: actual test data | Blue: predictions",
     x = "Year",
     y = "Total establishments"
   ) +
-  theme_minimal()
+  theme_minimal() +
+  theme(
+    strip.text = element_text(size = 9),
+    axis.text.x = element_text(size = 7),
+    axis.text.y = element_text(size = 7)
+  )
+
+p_lr
 
 # save
 ggsave(
-  "LR1_AFS_Trend.png",
-  width = 12,
-  height = 8,
-  dpi = 300
+  filename = "LR_actual_vs_predicted.png",
+  plot = p_lr,
+  width = 14,
+  height = 12,
+  units = "in",
+  dpi = 300,
+  bg = "white"
 )
+
+
+### CHECK WHETHER THE PREDICTED DIRECTION WAS CORRECT
+
+test_direction <- test_predictions %>%
+  arrange(Industry, Year) %>%
+  group_by(Industry) %>%
+  summarise(
+    Actual_test_change =
+      last(Actual_establishments) -
+      first(Actual_establishments),
+    
+    Predicted_test_change =
+      last(Predicted_establishments) -
+      first(Predicted_establishments),
+    
+    .groups = "drop"
+  ) %>%
+  mutate(
+    Actual_test_direction = if_else(
+      Actual_test_change < 0,
+      "Decline",
+      "Growth"
+    ),
+    
+    Predicted_direction = if_else(
+      Predicted_test_change < 0,
+      "Decline",
+      "Growth"
+    ),
+    
+    Direction_correct =
+      Actual_test_direction == Predicted_direction
+  )
+
+test_direction
+
+
+
+### FINAL DECLINE ASSESSMENT
+
+decline_assessment <- industry_model_summary %>%
+  ungroup() %>%
+  left_join(
+    model_performance,
+    by = "Industry"
+  ) %>%
+  left_join(
+    test_direction,
+    by = "Industry"
+  ) %>%
+  mutate(
+    Historical_decline =
+      Annual_change < 0 & P_value < 0.05,
+    
+    Continued_decline_in_test =
+      Historical_decline &
+      Actual_test_direction == "Decline",
+    
+    Prediction_accuracy = case_when(
+      MAPE < 10 ~ "High",
+      MAPE < 20 ~ "Moderate",
+      TRUE ~ "Low"
+    )
+  ) %>%
+  arrange(MAPE)
+
+decline_assessment
+
+
+# Final Result Display
+decline_candidates <- decline_assessment %>%
+  filter(Actual_test_change < 0) %>%
+  mutate(
+    Evidence_type = case_when(
+      Historical_decline & Direction_correct ~
+        "Persistent decline predicted by model",
+      
+      TRUE ~
+        "Emerging decline not predicted by model"
+    )
+  ) %>%
+  select(
+    Industry,
+    Annual_change,
+    Actual_test_change,
+    Predicted_test_change,
+    Direction_correct,
+    MAPE,
+    Evidence_type
+  ) %>%
+  arrange(Actual_test_change)
+
+decline_candidates
 
 
 
