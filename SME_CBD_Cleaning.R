@@ -291,7 +291,7 @@ range(test_data$Year)
 range(test_predictions$Year)
 
 
-### Model Application: Linear Regression (predictive for RQ2)
+### MODEL APPLICATION (predictive for RQ2)
 
 # Linear Regression for All Industries
 # Fit one separate regression model for each industry
@@ -332,7 +332,7 @@ industry_model_summary <- industry_models %>%
 industry_model_summary
 
 
-### Graph for Linear Regression
+### LINEAR REGRESSION VISUALISATION
 
 # predictions for every industry in the test set
 
@@ -512,8 +512,56 @@ decline_candidates <- decline_assessment %>%
 decline_candidates
 
 
+# -----------------------------------------------------------
+
+### RQ3: Prescriptive
+
+# Include all industries that declined during the assessment period
+candidate_industries <- decline_candidates %>%
+  pull(Industry)
+
+candidate_industries
 
 
+# Calculate employment change between 2002 and 2024
+job_impact <- jobs_trend %>%
+  filter(
+    Industry %in% candidate_industries,
+    Year %in% c(2002, 2024)
+  ) %>%
+  pivot_wider(
+    names_from = Year,
+    values_from = `Total jobs`,
+    names_prefix = "Jobs_"
+  ) %>%
+  mutate(
+    Job_change = Jobs_2024 - Jobs_2002,
+    Jobs_lost = Jobs_2002 - Jobs_2024,
+    Percentage_job_change =
+      (Jobs_2024 - Jobs_2002) / Jobs_2002 * 100
+  ) %>%
+  arrange(desc(Jobs_lost))
 
+job_impact
+
+
+# combine employment impact with the existing persistence classification
+rq3_priority <- decline_candidates %>%
+  select(
+    Industry,
+    Annual_change,
+    Actual_test_change,
+    MAPE,
+    Evidence_type
+  ) %>%
+  left_join(job_impact, by = "Industry") %>%
+  arrange(desc(Jobs_lost))
+
+rq3_priority
+
+
+# haven't start working on the actual dataset from 2002-2024
+# because the current model is not considered to be valid
+# 
 
 
