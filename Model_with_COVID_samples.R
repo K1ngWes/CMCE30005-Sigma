@@ -456,7 +456,6 @@ test_direction <- test_predictions %>%
 test_direction
 
 
-
 ### FINAL DECLINE ASSESSMENT
 
 decline_assessment <- industry_model_summary %>%
