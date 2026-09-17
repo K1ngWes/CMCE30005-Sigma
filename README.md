@@ -50,6 +50,7 @@ Industry trends are examined using:
 - Percentage change
 - Industry share within CBD SMEs
 
+
 ## RQ2 – Predictive Analysis
 Linear regression models are used to estimate establishment trends for each industry.
 
@@ -63,6 +64,45 @@ structural disruption to normal business activity.
 Model performance is evaluated by comparing the predicted and actual direction of change 
 for each industry.
 
+
+## RQ3 – Prescriptive Analysis
+Industries showing persistent establishment decline are evaluated alongside their 
+employment impact to identify industries that may warrant greater policy attention.
+
+
+### Interim Progress
+
+At the interim stage:
+
+- Data cleaning and filtering for Dataset 1 have been completed.
+- Descriptive analysis for RQ1 has been completed.
+- The predictive model for RQ2 has been developed and tested.
+- The model correctly predicted the direction of change for 14 of 19 industries in 
+  the validation period.
+- RQ3 methodology has been developed and will be refined in the final stage of the project.
+- Evaluating the usefulness of dataset 2
+
+
+### Next Steps
+
+The next stage of the project will include:
+
+- Keep refining the predictive methodology and decline threshold
+- Applying the final model to the full dataset
+- Completing the analysis of Dataset 2
+- Integrating establishment and employment trends
+- Developing final recommendations for the City of Melbourne
+
+
+### Tools
+
+The analysis is conducted in R using packages including:
+
+- `dplyr`
+- `ggplot2`
+- `tidyr`
+- `purrr`
+- `broom`
 
 
 
