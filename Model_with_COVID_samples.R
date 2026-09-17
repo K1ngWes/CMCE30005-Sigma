@@ -1,3 +1,5 @@
+### model including covid-19 period (2020-2024)
+
 # install.packages(
 #   c("ggplot2", "dplyr", "tidyr", "purrr", "broom", "gt")
 # )
@@ -273,13 +275,13 @@ sum(sme_cbd$Total_jobs < 0, na.rm = TRUE)
 
 library(dplyr)
 
-# Training data: 2002–2014
+# Training data: 2002–2012
 train_data <- industry_trend %>%
-  filter(Year >= 2002, Year <= 2014)
+  filter(Year >= 2002, Year <= 2020)
 
-# Test data: 2015–2018
+# Test data: 2013–2018
 test_data <- industry_trend %>%
-  filter(Year >= 2015, Year <= 2018)
+  filter(Year >= 2021, Year <= 2024)
 
 # Check that the split is correct
 sort(unique(train_data$Year))
@@ -305,7 +307,7 @@ industry_models <- train_data %>%
     )
   )
 
-# Summaru table for all industries
+# Summary table for all industries
 
 industry_model_summary <- industry_models %>%
   mutate(
@@ -355,7 +357,7 @@ test_predictions <- industry_models %>%
 
 test_predictions
 
-# display training observation
+# display training obsevation
 
 p_lr <- ggplot() +
   geom_line(
@@ -391,9 +393,6 @@ p_lr <- ggplot() +
     scales = "free_y",
     ncol = 4
   ) +
-  scale_x_continuous(
-    breaks = c(2002, 2006, 2010, 2014, 2018)
-  ) +
   labs(
     title = "Actual and Predicted SME Establishments by Industry",
     subtitle = "Black: training data | Red: actual test data | Blue: predictions",
@@ -413,13 +412,12 @@ p_lr
 ggsave(
   filename = "LR_actual_vs_predicted.png",
   plot = p_lr,
-  width = 12,
-  height = 10,
+  width = 14,
+  height = 12,
   units = "in",
   dpi = 300,
   bg = "white"
 )
-
 
 
 ### CHECK WHETHER THE PREDICTED DIRECTION WAS CORRECT
@@ -567,3 +565,5 @@ rq3_priority
 # haven't start working on the actual dataset from 2002-2024
 # because the current model is not considered to be valid
 # 
+
+
