@@ -1,4 +1,3 @@
-## TERESA'S CHATGPT WORK FOR ADDRESS DATASET
 install.packages("tidyverse")
 library(tidyverse)
 
