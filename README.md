@@ -93,6 +93,18 @@ The next stage of the project will include:
 - Integrating establishment and employment trends
 - Developing final recommendations for the City of Melbourne
 
+A More Detailed Version:
+
+Remaining tasks: formal residual diagnostics on the regression models,
+stakeholder-facing set of findings, incorporating Dataset 2 which is currently 
+cleaned but not yet analysed, finalising the business problem statement and this 
+content in the repository README.
+
+Next steps: reconcile the 4-digit ANZSIC codes in Dataset 2 with the 19 broad 
+categories in Dataset 1 so the two datasets can be cross-referenced, then produce 
+the final integrated write-up and visual summary for submission, further data
+processing, model development.
+
 
 ### Tools
 
@@ -103,7 +115,6 @@ The analysis is conducted in R using packages including:
 - `tidyr`
 - `purrr`
 - `broom`
-
 
 
 
