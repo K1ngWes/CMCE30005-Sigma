@@ -38,8 +38,8 @@ predict which are most at risk going forward.
 
 | File | Description | Size |
 |------|-------------|------|
-| `business-establishments-with-address-and-industry-classification.csv` | Address and industry | ~size MB |
-| `business-establishments-and-jobs-data-by-business-size-and-anzsic.csv` | Jobs data | ~size MB |
+| `business-establishments-with-address-and-industry-classification.csv` | Address and industry | 76MB |
+| `business-establishments-and-jobs-data-by-business-size-and-anzsic.csv` | Jobs data | 924KB |
 
    
 ### Methodology
