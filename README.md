@@ -10,8 +10,11 @@
 
 ## Business Problem
 
-[Write your one-paragraph problem statement here. Include: who is the stakeholder,
-what question you are answering, why it matters, and what methods you plan to use.]
+Which SME industries in the Melbourne CBD are growing or declining, and which need
+the most government support? Using 23 years (2002–2024) of CLUE data, we analyse 
+establishment and job trends for 19 SME industries in the CBD, using per-industry 
+linear regression to test which industries show statistically reliable decline and
+predict which are most at risk going forward.
 
 
 ### Research Questions
