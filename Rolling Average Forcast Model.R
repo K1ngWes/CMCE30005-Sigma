@@ -1,9 +1,12 @@
-### LR model including covid-19 period (2020-2024)
-### Accuracy: 47.37
-
-# install.packages(
-#   c("ggplot2", "dplyr", "tidyr", "purrr", "broom", "gt")
-# )
+install.packages(c(
+  "ggplot2",
+  "dplyr",
+  "tidyr",
+  "purrr",
+  "broom",
+  "gt",
+  "zoo"
+))
 
 # Load required packages
 library(ggplot2)
@@ -12,6 +15,7 @@ library(tidyr)
 library(purrr)
 library(broom)
 library(gt)
+library(zoo)
 
 business_establishments_and_jobs <- read.csv(
   "~/Desktop/BAC/business-establishments-and-jobs-data-by-business-size-and-anzsic.csv",
@@ -269,303 +273,195 @@ sum(sme_cbd$Total_establishments < 0, na.rm = TRUE)
 sum(sme_cbd$Total_jobs < 0, na.rm = TRUE)
 
 
+
 # -----------------------------------------------------------------------
 
 
-### RQ2: TIME-BASED TRAIN-TEST SPLIT
-
-library(dplyr)
-
-# Training data: 2002–2012
-train_data <- industry_trend %>%
-  filter(Year >= 2002, Year <= 2020)
-
-# Test data: 2013–2018
-test_data <- industry_trend %>%
-  filter(Year >= 2021, Year <= 2024)
-
-# Check that the split is correct
-sort(unique(train_data$Year))
-sort(unique(test_data$Year))
-
-# check
-range(train_data$Year)
-range(test_data$Year)
-range(test_predictions$Year)
+# RQ2 (predictive): ROLLING-AVERAGE FORECAST  (replaces lm ~ Year)
+# Run AFTER your existing code that creates industry_trend and jobs_trend
 
 
-### MODEL APPLICATION (predictive for RQ2)
+# ---- settings (easy to change / justify in the report) ----
+window_size <- 3      # years in the rolling window
+test_start  <- 2015   # first forecast year
+test_end    <- 2024   # last forecast year
 
-# Linear Regression for All Industries
-# Fit one separate regression model for each industry
-industry_models <- train_data %>%
-  group_by(Industry) %>%
-  nest() %>%
-  mutate(
-    model = map(
-      data,
-      ~ lm(`Total establishments` ~ Year, data = .x)
-    )
-  )
-
-# Summary table for all industries
-
-industry_model_summary <- industry_models %>%
-  mutate(
-    model_results = map(model, tidy),
-    model_fit = map(model, glance)
-  ) %>%
-  unnest(model_results) %>%
-  filter(term == "Year") %>%
-  select(
-    Industry,
-    Annual_change = estimate,
-    Std_error = std.error,
-    P_value = p.value
-  ) %>%
-  left_join(
-    industry_models %>%
-      mutate(model_fit = map(model, glance)) %>%
-      unnest(model_fit) %>%
-      select(Industry, R_squared = r.squared),
-    by = "Industry"
-  ) %>%
-  arrange(Annual_change)
-
-industry_model_summary
-
-
-### LINEAR REGRESSION VISUALISATION
-
-# predictions for every industry in the test set
-
-test_predictions <- industry_models %>%
-  select(Industry, model) %>%
-  left_join(test_data, by = "Industry") %>%
-  mutate(
-    Predicted_establishments = map2_dbl(
-      model,
-      Year,
-      ~ predict(.x, newdata = data.frame(Year = .y))
-    )
-  ) %>%
-  select(
-    Industry,
-    Year,
-    Actual_establishments = `Total establishments`,
-    Predicted_establishments
-  )
-
-test_predictions
-
-# display training obsevation
-
-p_lr <- ggplot() +
-  geom_line(
-    data = train_data,
-    aes(
-      x = Year,
-      y = `Total establishments`,
-      group = Industry
-    ),
-    colour = "black"
-  ) +
-  geom_point(
-    data = test_predictions,
-    aes(
-      x = Year,
-      y = Actual_establishments
-    ),
-    colour = "#E57373",
-    size = 2
-  ) +
-  geom_line(
-    data = test_predictions,
-    aes(
-      x = Year,
-      y = Predicted_establishments,
-      group = Industry
-    ),
-    colour = "#377EB8",
-    linetype = "dashed"
-  ) +
-  facet_wrap(
-    ~ Industry,
-    scales = "free_y",
-    ncol = 4
-  ) +
-  labs(
-    title = "Actual and Predicted SME Establishments by Industry",
-    subtitle = "Black: training data | Red: actual test data | Blue: predictions",
-    x = "Year",
-    y = "Total establishments"
-  ) +
-  theme_minimal() +
-  theme(
-    strip.text = element_text(size = 9),
-    axis.text.x = element_text(size = 7),
-    axis.text.y = element_text(size = 7)
-  )
-
-p_lr
-
-# save
-ggsave(
-  filename = "LR_actual_vs_predicted.png",
-  plot = p_lr,
-  width = 14,
-  height = 12,
-  units = "in",
-  dpi = 300,
-  bg = "white"
-)
-
-
-### CHECK WHETHER THE PREDICTED DIRECTION WAS CORRECT
-
-test_direction <- test_predictions %>%
+# ---- 1. rolling average of yearly change + one-step-ahead forecast ----
+# Forecast for year t uses ONLY data up to year t-1:
+#   Pred_rolling(t) = Establishments(t-1) + average yearly change over the
+#                     previous `window_size` years
+#   Pred_naive(t)   = Establishments(t-1)   (benchmark: "no change")
+trend <- industry_trend %>%
+  rename(Establishments = `Total establishments`) %>%
   arrange(Industry, Year) %>%
   group_by(Industry) %>%
+  mutate(
+    Change      = Establishments - lag(Establishments),
+    Roll_change = rollapplyr(Change, window_size, mean, fill = NA)
+  ) %>%
+  ungroup()
+
+# ---- 2. test-period predictions (same names as your old code) ----
+origin <- test_start - 1     # last year the model is allowed to "see"
+
+test_predictions <- trend %>%
+  group_by(Industry) %>%
+  mutate(
+    Base  = Establishments[Year == origin],   # count in 2014
+    Slope = Roll_change[Year == origin],      # avg yearly change, 2012-2014
+    Predicted_establishments = Base + Slope * (Year - origin),
+    Naive_prediction         = Base           # benchmark: stays at 2014 level
+  ) %>%
+  ungroup() %>%
+  filter(Year >= test_start, Year <= test_end) %>%
+  select(
+    Industry, Year,
+    Actual_establishments = Establishments,
+    Predicted_establishments, Naive_prediction, Base, Slope
+  )
+
+# ---- 3. accuracy: rolling average vs naive benchmark ----
+model_performance <- test_predictions %>%
+  filter(Actual_establishments > 0) %>%     # avoid dividing by zero
+  group_by(Industry) %>%
   summarise(
-    Actual_test_change =
-      last(Actual_establishments) -
-      first(Actual_establishments),
-    
-    Predicted_test_change =
-      last(Predicted_establishments) -
-      first(Predicted_establishments),
-    
+    MAPE       = mean(abs(Actual_establishments - Predicted_establishments) /
+                        Actual_establishments) * 100,
+    MAPE_naive = mean(abs(Actual_establishments - Naive_prediction) /
+                        Actual_establishments) * 100,
+    .groups = "drop"
+  ) %>%
+  mutate(Beats_naive = MAPE < MAPE_naive)
+
+model_performance
+
+# ---- 4. was the predicted DIRECTION correct? ----
+# average yearly change in the test period: actual vs predicted
+test_direction <- test_predictions %>%
+  group_by(Industry) %>%
+  summarise(
+    Actual_test_change    = last(Actual_establishments)    - first(Base),
+    Predicted_test_change = last(Predicted_establishments) - first(Base),
     .groups = "drop"
   ) %>%
   mutate(
-    Actual_test_direction = if_else(
-      Actual_test_change < 0,
-      "Decline",
-      "Growth"
-    ),
-    
-    Predicted_direction = if_else(
-      Predicted_test_change < 0,
-      "Decline",
-      "Growth"
-    ),
-    
-    Direction_correct =
-      Actual_test_direction == Predicted_direction
+    Actual_test_direction = if_else(Actual_test_change < 0, "Decline", "Growth"),
+    Predicted_direction   = if_else(Predicted_test_change < 0, "Decline", "Growth"),
+    Direction_correct     = Actual_test_direction == Predicted_direction
   )
 
-test_direction
+# ---- 5. trend going INTO the test period (replaces regression slope) ----
+historical_trend <- trend %>%
+  filter(Year == test_start - 1) %>%
+  select(Industry, Recent_avg_change = Roll_change)
 
-
-### FINAL DECLINE ASSESSMENT
-
-decline_assessment <- industry_model_summary %>%
-  ungroup() %>%
-  left_join(
-    model_performance,
-    by = "Industry"
-  ) %>%
-  left_join(
-    test_direction,
-    by = "Industry"
-  ) %>%
+# ---- 6. final decline assessment ----
+decline_assessment <- historical_trend %>%
+  left_join(model_performance, by = "Industry") %>%
+  left_join(test_direction,    by = "Industry") %>%
   mutate(
-    Historical_decline =
-      Annual_change < 0 & P_value < 0.05,
-    
-    Continued_decline_in_test =
-      Historical_decline &
-      Actual_test_direction == "Decline",
-    
+    Historical_decline = Recent_avg_change < 0,
     Prediction_accuracy = case_when(
       MAPE < 10 ~ "High",
       MAPE < 20 ~ "Moderate",
-      TRUE ~ "Low"
+      TRUE      ~ "Low"
     )
   ) %>%
   arrange(MAPE)
 
 decline_assessment
 
-
-# Final Result Display
+# industries that actually declined in the test period
 decline_candidates <- decline_assessment %>%
   filter(Actual_test_change < 0) %>%
   mutate(
     Evidence_type = case_when(
       Historical_decline & Direction_correct ~
-        "Persistent decline predicted by model",
-      
+        "Persistent decline flagged by rolling average",
       TRUE ~
-        "Emerging decline not predicted by model"
+        "Emerging decline not flagged by rolling average"
     )
   ) %>%
   select(
     Industry,
-    Annual_change,
+    Recent_avg_change,
     Actual_test_change,
     Predicted_test_change,
     Direction_correct,
     MAPE,
+    MAPE_naive,
     Evidence_type
   ) %>%
   arrange(Actual_test_change)
 
 decline_candidates
 
+# ---- 7. visualisation ----
+p_roll <- ggplot() +
+  geom_line(
+    data = trend,
+    aes(x = Year, y = Establishments, group = Industry),
+    colour = "black"
+  ) +
+  geom_line(
+    data = test_predictions,
+    aes(x = Year, y = Predicted_establishments, group = Industry),
+    colour = "#377EB8", linetype = "dashed"
+  ) +
+  geom_point(
+    data = test_predictions,
+    aes(x = Year, y = Actual_establishments),
+    colour = "#E57373", size = 1.5
+  ) +
+  facet_wrap(~ Industry, scales = "free_y", ncol = 4) +
+  labs(
+    title = "Actual and Rolling-Average Forecast of SME Establishments by Industry",
+    subtitle = paste0("Black: actual | Red: actual in test period | Blue: ",
+                      window_size, "-year rolling-average one-step-ahead forecast"),
+    x = "Year", y = "Total establishments"
+  ) +
+  theme_minimal() +
+  theme(
+    strip.text  = element_text(size = 9),
+    axis.text.x = element_text(size = 7),
+    axis.text.y = element_text(size = 7)
+  )
+
+p_roll
+
+ggsave("Rolling_actual_vs_predicted.png", plot = p_roll,
+       width = 12, height = 10, units = "in", dpi = 300, bg = "white")
 
 
-
-# -----------------------------------------------------------
-
-### RQ3: Prescriptive
-
-# Include all industries that declined during the assessment period
-candidate_industries <- decline_candidates %>%
-  pull(Industry)
-
+# =====================================================================
+# RQ3 (prescriptive): job impact of declining industries
+# (same logic as before, now fed by the rolling-average results)
+# =====================================================================
+candidate_industries <- decline_candidates %>% pull(Industry)
 candidate_industries
 
-
-# Calculate employment change between 2002 and 2024
 job_impact <- jobs_trend %>%
   filter(
     Industry %in% candidate_industries,
     Year %in% c(2002, 2024)
   ) %>%
   pivot_wider(
-    names_from = Year,
+    names_from  = Year,
     values_from = `Total jobs`,
     names_prefix = "Jobs_"
   ) %>%
   mutate(
     Job_change = Jobs_2024 - Jobs_2002,
-    Jobs_lost = Jobs_2002 - Jobs_2024,
-    Percentage_job_change =
-      (Jobs_2024 - Jobs_2002) / Jobs_2002 * 100
+    Jobs_lost  = Jobs_2002 - Jobs_2024,
+    Percentage_job_change = (Jobs_2024 - Jobs_2002) / Jobs_2002 * 100
   ) %>%
   arrange(desc(Jobs_lost))
 
 job_impact
 
-
-# combine employment impact with the existing persistence classification
 rq3_priority <- decline_candidates %>%
-  select(
-    Industry,
-    Annual_change,
-    Actual_test_change,
-    MAPE,
-    Evidence_type
-  ) %>%
+  select(Industry, Recent_avg_change, Actual_test_change, MAPE, Evidence_type) %>%
   left_join(job_impact, by = "Industry") %>%
   arrange(desc(Jobs_lost))
 
 rq3_priority
-
-
-# haven't start working on the actual dataset from 2002-2024
-# because the current model is not considered to be valid
-# 
-
-

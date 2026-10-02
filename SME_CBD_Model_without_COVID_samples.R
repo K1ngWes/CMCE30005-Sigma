@@ -1,3 +1,7 @@
+### Linear Regression Model
+### Accuracy: 68.42%
+
+
 # install.packages(
 #   c("ggplot2", "dplyr", "tidyr", "purrr", "broom", "gt")
 # )
@@ -514,6 +518,13 @@ decline_candidates <- decline_assessment %>%
   arrange(Actual_test_change)
 
 decline_candidates
+
+
+### test
+test_direction
+
+### Accuracy in percentage
+mean(test_direction$Direction_correct) * 100
 
 
 # -----------------------------------------------------------

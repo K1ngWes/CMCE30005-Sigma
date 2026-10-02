@@ -1,9 +1,13 @@
-### LR model including covid-19 period (2020-2024)
-### Accuracy: 47.37
-
-# install.packages(
-#   c("ggplot2", "dplyr", "tidyr", "purrr", "broom", "gt")
-# )
+install.packages(c(
+  "ggplot2",
+  "dplyr",
+  "tidyr",
+  "purrr",
+  "broom",
+  "gt",
+  "zoo",
+  "forecast"
+))
 
 # Load required packages
 library(ggplot2)
@@ -12,6 +16,8 @@ library(tidyr)
 library(purrr)
 library(broom)
 library(gt)
+library(zoo)
+library(forecast)
 
 business_establishments_and_jobs <- read.csv(
   "~/Desktop/BAC/business-establishments-and-jobs-data-by-business-size-and-anzsic.csv",
@@ -269,303 +275,167 @@ sum(sme_cbd$Total_establishments < 0, na.rm = TRUE)
 sum(sme_cbd$Total_jobs < 0, na.rm = TRUE)
 
 
+
 # -----------------------------------------------------------------------
 
 
-### RQ2: TIME-BASED TRAIN-TEST SPLIT
+# RQ2 (predictive): ARIMA FORECAST  (replaces the rolling-average block)
+# Run AFTER the code that creates industry_trend and jobs_trend
 
-library(dplyr)
+# settings
+train_end <- 2015     # model only sees data up to this year
+test_end  <- 2019     # forecast up to this year (use 2024 to include COVID)
 
-# Training data: 2002–2012
-train_data <- industry_trend %>%
-  filter(Year >= 2002, Year <= 2020)
+# ---- 1. fit one ARIMA per industry on the training years, forecast ahead ----
+# auto.arima() chooses the ARIMA(p,d,q) orders automatically (AIC-based).
+# The forecast is multi-step from a fixed origin: no peeking at test years.
+trend <- industry_trend %>%
+  rename(Establishments = `Total establishments`) %>%
+  arrange(Industry, Year)
 
-# Test data: 2013–2018
-test_data <- industry_trend %>%
-  filter(Year >= 2021, Year <= 2024)
-
-# Check that the split is correct
-sort(unique(train_data$Year))
-sort(unique(test_data$Year))
-
-# check
-range(train_data$Year)
-range(test_data$Year)
-range(test_predictions$Year)
-
-
-### MODEL APPLICATION (predictive for RQ2)
-
-# Linear Regression for All Industries
-# Fit one separate regression model for each industry
-industry_models <- train_data %>%
+test_predictions <- trend %>%
   group_by(Industry) %>%
-  nest() %>%
-  mutate(
-    model = map(
-      data,
-      ~ lm(`Total establishments` ~ Year, data = .x)
+  group_modify(~ {
+    train <- .x %>% filter(Year <= train_end)
+    test  <- .x %>% filter(Year > train_end, Year <= test_end)
+    
+    fit <- auto.arima(ts(train$Establishments, start = min(train$Year)))
+    fc  <- forecast(fit, h = nrow(test))
+    ord <- arimaorder(fit)[1:3]
+    
+    tibble(
+      Year                     = test$Year,
+      Actual_establishments    = test$Establishments,
+      Predicted_establishments = as.numeric(fc$mean),
+      Base                     = tail(train$Establishments, 1),   # last training value
+      Naive_prediction         = tail(train$Establishments, 1),   # benchmark: no change
+      ARIMA_order              = paste0("(", paste(ord, collapse = ","), ")")
     )
-  )
-
-# Summary table for all industries
-
-industry_model_summary <- industry_models %>%
-  mutate(
-    model_results = map(model, tidy),
-    model_fit = map(model, glance)
-  ) %>%
-  unnest(model_results) %>%
-  filter(term == "Year") %>%
-  select(
-    Industry,
-    Annual_change = estimate,
-    Std_error = std.error,
-    P_value = p.value
-  ) %>%
-  left_join(
-    industry_models %>%
-      mutate(model_fit = map(model, glance)) %>%
-      unnest(model_fit) %>%
-      select(Industry, R_squared = r.squared),
-    by = "Industry"
-  ) %>%
-  arrange(Annual_change)
-
-industry_model_summary
-
-
-### LINEAR REGRESSION VISUALISATION
-
-# predictions for every industry in the test set
-
-test_predictions <- industry_models %>%
-  select(Industry, model) %>%
-  left_join(test_data, by = "Industry") %>%
-  mutate(
-    Predicted_establishments = map2_dbl(
-      model,
-      Year,
-      ~ predict(.x, newdata = data.frame(Year = .y))
-    )
-  ) %>%
-  select(
-    Industry,
-    Year,
-    Actual_establishments = `Total establishments`,
-    Predicted_establishments
-  )
+  }) %>%
+  ungroup()
 
 test_predictions
 
-# display training obsevation
+# which ARIMA orders were chosen? (useful for the report)
+test_predictions %>% distinct(Industry, ARIMA_order)
 
-p_lr <- ggplot() +
-  geom_line(
-    data = train_data,
-    aes(
-      x = Year,
-      y = `Total establishments`,
-      group = Industry
-    ),
-    colour = "black"
-  ) +
-  geom_point(
-    data = test_predictions,
-    aes(
-      x = Year,
-      y = Actual_establishments
-    ),
-    colour = "#E57373",
-    size = 2
-  ) +
-  geom_line(
-    data = test_predictions,
-    aes(
-      x = Year,
-      y = Predicted_establishments,
-      group = Industry
-    ),
-    colour = "#377EB8",
-    linetype = "dashed"
-  ) +
-  facet_wrap(
-    ~ Industry,
-    scales = "free_y",
-    ncol = 4
-  ) +
-  labs(
-    title = "Actual and Predicted SME Establishments by Industry",
-    subtitle = "Black: training data | Red: actual test data | Blue: predictions",
-    x = "Year",
-    y = "Total establishments"
-  ) +
-  theme_minimal() +
-  theme(
-    strip.text = element_text(size = 9),
-    axis.text.x = element_text(size = 7),
-    axis.text.y = element_text(size = 7)
-  )
-
-p_lr
-
-# save
-ggsave(
-  filename = "LR_actual_vs_predicted.png",
-  plot = p_lr,
-  width = 14,
-  height = 12,
-  units = "in",
-  dpi = 300,
-  bg = "white"
-)
-
-
-### CHECK WHETHER THE PREDICTED DIRECTION WAS CORRECT
-
-test_direction <- test_predictions %>%
-  arrange(Industry, Year) %>%
+# ---- 2. accuracy: ARIMA vs naive benchmark ----
+model_performance <- test_predictions %>%
+  filter(Actual_establishments > 0) %>%
   group_by(Industry) %>%
   summarise(
-    Actual_test_change =
-      last(Actual_establishments) -
-      first(Actual_establishments),
-    
-    Predicted_test_change =
-      last(Predicted_establishments) -
-      first(Predicted_establishments),
-    
+    MAPE       = mean(abs(Actual_establishments - Predicted_establishments) /
+                        Actual_establishments) * 100,
+    MAPE_naive = mean(abs(Actual_establishments - Naive_prediction) /
+                        Actual_establishments) * 100,
+    .groups = "drop"
+  ) %>%
+  mutate(Beats_naive = MAPE < MAPE_naive)
+
+model_performance
+
+# ---- 3. direction: did the ARIMA forecast get up/down right? ----
+test_direction <- test_predictions %>%
+  group_by(Industry) %>%
+  summarise(
+    Actual_test_change    = last(Actual_establishments)    - first(Base),
+    Predicted_test_change = last(Predicted_establishments) - first(Base),
     .groups = "drop"
   ) %>%
   mutate(
-    Actual_test_direction = if_else(
-      Actual_test_change < 0,
-      "Decline",
-      "Growth"
-    ),
-    
-    Predicted_direction = if_else(
-      Predicted_test_change < 0,
-      "Decline",
-      "Growth"
-    ),
-    
-    Direction_correct =
-      Actual_test_direction == Predicted_direction
+    Actual_test_direction = if_else(Actual_test_change < 0, "Decline", "Growth"),
+    Predicted_direction   = if_else(Predicted_test_change < 0, "Decline", "Growth"),
+    Direction_correct     = Actual_test_direction == Predicted_direction
   )
 
 test_direction
 
+# headline numbers (compare with "always growth" baseline)
+mean(test_direction$Direction_correct) * 100                  # model
+mean(test_direction$Actual_test_direction == "Growth") * 100  # baseline
 
-### FINAL DECLINE ASSESSMENT
 
-decline_assessment <- industry_model_summary %>%
-  ungroup() %>%
-  left_join(
-    model_performance,
-    by = "Industry"
-  ) %>%
-  left_join(
-    test_direction,
-    by = "Industry"
-  ) %>%
+# 4. decline assessment 
+decline_assessment <- test_direction %>%
+  left_join(model_performance, by = "Industry") %>%
   mutate(
-    Historical_decline =
-      Annual_change < 0 & P_value < 0.05,
-    
-    Continued_decline_in_test =
-      Historical_decline &
-      Actual_test_direction == "Decline",
-    
     Prediction_accuracy = case_when(
       MAPE < 10 ~ "High",
       MAPE < 20 ~ "Moderate",
-      TRUE ~ "Low"
+      TRUE      ~ "Low"
     )
   ) %>%
   arrange(MAPE)
 
 decline_assessment
 
-
-# Final Result Display
 decline_candidates <- decline_assessment %>%
   filter(Actual_test_change < 0) %>%
   mutate(
     Evidence_type = case_when(
-      Historical_decline & Direction_correct ~
-        "Persistent decline predicted by model",
-      
-      TRUE ~
-        "Emerging decline not predicted by model"
+      Direction_correct ~ "Decline predicted by ARIMA",
+      TRUE              ~ "Emerging decline not predicted by ARIMA"
     )
   ) %>%
-  select(
-    Industry,
-    Annual_change,
-    Actual_test_change,
-    Predicted_test_change,
-    Direction_correct,
-    MAPE,
-    Evidence_type
-  ) %>%
+  select(Industry, Actual_test_change, Predicted_test_change,
+         Direction_correct, MAPE, MAPE_naive, Beats_naive, Evidence_type) %>%
   arrange(Actual_test_change)
 
 decline_candidates
 
 
+# 5. plot 
+p_arima <- ggplot() +
+  geom_line(data = trend,
+            aes(x = Year, y = Establishments, group = Industry),
+            colour = "black") +
+  geom_line(data = test_predictions,
+            aes(x = Year, y = Predicted_establishments, group = Industry),
+            colour = "#377EB8", linetype = "dashed") +
+  geom_point(data = test_predictions,
+             aes(x = Year, y = Actual_establishments),
+             colour = "#E57373", size = 1.5) +
+  facet_wrap(~ Industry, scales = "free_y", ncol = 4) +
+  labs(
+    title    = "Actual and ARIMA Forecast of SME Establishments by Industry",
+    subtitle = paste0("Black: actual | Red: actual in test period | Blue: ARIMA forecast from ",
+                      train_end),
+    x = "Year", y = "Total establishments"
+  ) +
+  theme_minimal() +
+  theme(strip.text  = element_text(size = 9),
+        axis.text.x = element_text(size = 7),
+        axis.text.y = element_text(size = 7))
+
+p_arima
+
+ggsave("ARIMA_actual_vs_predicted.png", plot = p_arima,
+       width = 12, height = 10, units = "in", dpi = 300, bg = "white")
 
 
-# -----------------------------------------------------------
+# test
 
-### RQ3: Prescriptive
+test_direction
 
-# Include all industries that declined during the assessment period
-candidate_industries <- decline_candidates %>%
-  pull(Industry)
-
-candidate_industries
+mean(test_direction$Direction_correct) * 100
 
 
-# Calculate employment change between 2002 and 2024
-job_impact <- jobs_trend %>%
-  filter(
-    Industry %in% candidate_industries,
-    Year %in% c(2002, 2024)
-  ) %>%
-  pivot_wider(
-    names_from = Year,
-    values_from = `Total jobs`,
-    names_prefix = "Jobs_"
-  ) %>%
-  mutate(
-    Job_change = Jobs_2024 - Jobs_2002,
-    Jobs_lost = Jobs_2002 - Jobs_2024,
-    Percentage_job_change =
-      (Jobs_2024 - Jobs_2002) / Jobs_2002 * 100
-  ) %>%
-  arrange(desc(Jobs_lost))
 
-job_impact
+table(Actual = test_direction$Actual_test_direction,
+      Predicted = test_direction$Predicted_direction)
 
 
-# combine employment impact with the existing persistence classification
-rq3_priority <- decline_candidates %>%
-  select(
-    Industry,
-    Annual_change,
-    Actual_test_change,
-    MAPE,
-    Evidence_type
-  ) %>%
-  left_join(job_impact, by = "Industry") %>%
-  arrange(desc(Jobs_lost))
 
-rq3_priority
+# =====================================================================
+# RQ3 block: unchanged. Reuse your existing candidate_industries /
+# job_impact code, but drop Recent_avg_change from the select() in
+# rq3_priority (ARIMA has no such column).
+# =====================================================================
 
 
-# haven't start working on the actual dataset from 2002-2024
-# because the current model is not considered to be valid
-# 
+
+
+
+
 
 
