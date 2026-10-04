@@ -116,21 +116,6 @@ print(future_summary, n = Inf, width = Inf)
 install.packages("gt")
 library(gt)
 
-future_summary %>%
-  transmute(
-    Industry,
-    `2024 actual`    = Establishments_2024,
-    `2029 forecast`  = round(Predicted_end),
-    `Change`         = round(Predicted_change),
-    `Change (%)`     = round(Pct_change, 1),
-    Outlook,
-    Confidence
-  ) %>%
-  gt() %>%
-  tab_header(title = "Forecast SME Establishments by Industry, 2024 to 2029")
-
-
-# save file
 future_tbl <- future_summary %>%
   transmute(
     Industry,
@@ -150,7 +135,7 @@ future_tbl <- future_summary %>%
   tab_header(title = "Forecast SME Establishments by Industry, 2024 to 2029") %>%
   tab_source_note("Confidence: 'likely' means the whole 80% forecast range is on one side of the 2024 level.")
 
-future_tbl                                   # shows it in the Viewer
+future_tbl                                  
 gtsave(future_tbl, "future_forecast_table.docx")
 
 
