@@ -1,3 +1,9 @@
+### ARIMA 
+### Best Model with 78.95% Accuracy
+### ARIMA models a time series using its own past values and past forecast errors, 
+### with differencing to handle trends.
+
+
 install.packages(c(
   "ggplot2",
   "dplyr",
@@ -384,6 +390,13 @@ decline_candidates <- decline_assessment %>%
 decline_candidates
 
 
+decline_assessment %>%
+  select(Industry, Actual_test_change, Predicted_test_change,
+         Actual_test_direction, Predicted_direction, Direction_correct) %>%
+  print(n = Inf, width = Inf)
+
+
+
 # 5. plot 
 p_arima <- ggplot() +
   geom_line(data = trend,
@@ -426,13 +439,56 @@ table(Actual = test_direction$Actual_test_direction,
 
 
 
-# =====================================================================
-# RQ3 block: unchanged. Reuse your existing candidate_industries /
-# job_impact code, but drop Recent_avg_change from the select() in
-# rq3_priority (ARIMA has no such column).
-# =====================================================================
+#----------------------------------------------------------------------
+
+# RQ3 
+
+# RQ3 step 1: candidate industries
+# Takes the industries that actually declined in the test period from RQ2
+# and lists their names. These are the industries we check for job impact.
+# Output: a list of 7 industry names.
+candidate_industries <- decline_candidates %>% pull(Industry)
+candidate_industries
 
 
+# RQ3 step 2: job impact of each candidate industry
+# Compares total jobs in 2002 vs 2024 for those industries.
+#   Job_change = Jobs_2024 - Jobs_2002 (negative = jobs fell)
+#   Jobs_lost  = Jobs_2002 - Jobs_2024
+#   (POSITIVE = jobs fell, NEGATIVE = jobs actually grew)
+#   Percentage_job_change = change as a % of the 2002 job count
+# Sorted so the biggest job losses are at the top.
+job_impact <- jobs_trend %>%
+  filter(
+    Industry %in% candidate_industries,
+    Year %in% c(2002, 2024)
+  ) %>%
+  pivot_wider(
+    names_from  = Year,
+    values_from = `Total jobs`,
+    names_prefix = "Jobs_"
+  ) %>%
+  mutate(
+    Job_change = Jobs_2024 - Jobs_2002,
+    Jobs_lost  = Jobs_2002 - Jobs_2024,
+    Percentage_job_change = (Jobs_2024 - Jobs_2002) / Jobs_2002 * 100
+  ) %>%
+  arrange(desc(Jobs_lost))
+
+job_impact
+
+
+# RQ3 step 3: priority table
+# Joins the RQ2 results (change in establishments, forecast error MAPE,
+# and whether the decline was predicted or "emerging") with the job impact
+# above, giving one table to rank industries.
+# Industries near the top lost the most jobs, so they are the highest priority.
+rq3_priority <- decline_candidates %>%
+  select(Industry, Actual_test_change, MAPE, Evidence_type) %>%
+  left_join(job_impact, by = "Industry") %>%
+  arrange(desc(Jobs_lost))
+
+rq3_priority
 
 
 

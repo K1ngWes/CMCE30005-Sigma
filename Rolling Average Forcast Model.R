@@ -1,3 +1,7 @@
+### Rolling-Average Forecast Model
+### A Less Complicate Alternative of ARIMA
+### Accuracy: 52.63%
+
 install.packages(c(
   "ggplot2",
   "dplyr",
@@ -282,43 +286,72 @@ sum(sme_cbd$Total_jobs < 0, na.rm = TRUE)
 
 
 # ---- settings (easy to change / justify in the report) ----
-window_size <- 3      # years in the rolling window
-test_start  <- 2015   # first forecast year
-test_end    <- 2024   # last forecast year
+window_size <- 3
+test_start <- 2013
+test_end <- 2018
+
+origin <- test_start - 1
 
 # ---- 1. rolling average of yearly change + one-step-ahead forecast ----
-# Forecast for year t uses ONLY data up to year t-1:
-#   Pred_rolling(t) = Establishments(t-1) + average yearly change over the
-#                     previous `window_size` years
-#   Pred_naive(t)   = Establishments(t-1)   (benchmark: "no change")
+
 trend <- industry_trend %>%
   rename(Establishments = `Total establishments`) %>%
   arrange(Industry, Year) %>%
   group_by(Industry) %>%
   mutate(
-    Change      = Establishments - lag(Establishments),
-    Roll_change = rollapplyr(Change, window_size, mean, fill = NA)
+    # actual yearly change
+    Change = Establishments - lag(Establishments),
+    
+    # average change over the most recent 3 years
+    Roll_change = rollapplyr(
+      Change,
+      width = window_size,
+      FUN = mean,
+      fill = NA,
+      na.rm = TRUE
+    ),
+    
+    # previous year's actual establishment count
+    Previous_year = lag(Establishments),
+    
+    # TRUE one-step-ahead rolling forecast
+    # prediction for year t only uses information up to t-1
+    Predicted_establishments =
+      lag(Establishments) + lag(Roll_change),
+    
+    # naive benchmark: assume no change
+    Naive_prediction =
+      lag(Establishments),
+    
+    # useful for direction evaluation later
+    Actual_yearly_change =
+      Establishments - lag(Establishments),
+    
+    Predicted_yearly_change =
+      Predicted_establishments - lag(Establishments)
   ) %>%
   ungroup()
 
-# ---- 2. test-period predictions (same names as your old code) ----
-origin <- test_start - 1     # last year the model is allowed to "see"
+
+# ---- 2. test-period predictions ----
 
 test_predictions <- trend %>%
-  group_by(Industry) %>%
-  mutate(
-    Base  = Establishments[Year == origin],   # count in 2014
-    Slope = Roll_change[Year == origin],      # avg yearly change, 2012-2014
-    Predicted_establishments = Base + Slope * (Year - origin),
-    Naive_prediction         = Base           # benchmark: stays at 2014 level
+  filter(
+    Year >= test_start,
+    Year <= test_end,
+    !is.na(Predicted_establishments)
   ) %>%
-  ungroup() %>%
-  filter(Year >= test_start, Year <= test_end) %>%
   select(
-    Industry, Year,
+    Industry,
+    Year,
     Actual_establishments = Establishments,
-    Predicted_establishments, Naive_prediction, Base, Slope
+    Previous_year,
+    Predicted_establishments,
+    Naive_prediction,
+    Actual_yearly_change,
+    Predicted_yearly_change
   )
+
 
 # ---- 3. accuracy: rolling average vs naive benchmark ----
 model_performance <- test_predictions %>%
@@ -335,49 +368,66 @@ model_performance <- test_predictions %>%
 
 model_performance
 
-# ---- 4. was the predicted DIRECTION correct? ----
-# average yearly change in the test period: actual vs predicted
-test_direction <- test_predictions %>%
+
+# ---- 4. Did the PRE-TEST rolling trend correctly predict direction? ----
+
+test_direction <- trend %>%
   group_by(Industry) %>%
   summarise(
-    Actual_test_change    = last(Actual_establishments)    - first(Base),
-    Predicted_test_change = last(Predicted_establishments) - first(Base),
+    Recent_avg_change =
+      Roll_change[Year == origin],
+    
+    Actual_test_change =
+      Establishments[Year == test_end] -
+      Establishments[Year == origin],
+    
     .groups = "drop"
   ) %>%
   mutate(
-    Actual_test_direction = if_else(Actual_test_change < 0, "Decline", "Growth"),
-    Predicted_direction   = if_else(Predicted_test_change < 0, "Decline", "Growth"),
-    Direction_correct     = Actual_test_direction == Predicted_direction
+    Actual_test_direction = if_else(
+      Actual_test_change < 0,
+      "Decline",
+      "Growth"
+    ),
+    
+    Predicted_direction = if_else(
+      Recent_avg_change < 0,
+      "Decline",
+      "Growth"
+    ),
+    
+    Direction_correct =
+      Actual_test_direction == Predicted_direction
   )
 
-# ---- 5. trend going INTO the test period (replaces regression slope) ----
-historical_trend <- trend %>%
-  filter(Year == test_start - 1) %>%
-  select(Industry, Recent_avg_change = Roll_change)
 
-# ---- 6. final decline assessment ----
-decline_assessment <- historical_trend %>%
+# ---- 5. final decline assessment ----
+
+decline_assessment <- test_direction %>%
   left_join(model_performance, by = "Industry") %>%
-  left_join(test_direction,    by = "Industry") %>%
   mutate(
     Historical_decline = Recent_avg_change < 0,
+    
     Prediction_accuracy = case_when(
       MAPE < 10 ~ "High",
       MAPE < 20 ~ "Moderate",
-      TRUE      ~ "Low"
+      TRUE ~ "Low"
     )
   ) %>%
   arrange(MAPE)
 
 decline_assessment
 
+
 # industries that actually declined in the test period
+
 decline_candidates <- decline_assessment %>%
   filter(Actual_test_change < 0) %>%
   mutate(
     Evidence_type = case_when(
       Historical_decline & Direction_correct ~
         "Persistent decline flagged by rolling average",
+      
       TRUE ~
         "Emerging decline not flagged by rolling average"
     )
@@ -386,15 +436,18 @@ decline_candidates <- decline_assessment %>%
     Industry,
     Recent_avg_change,
     Actual_test_change,
-    Predicted_test_change,
+    Actual_test_direction,
+    Predicted_direction,
     Direction_correct,
     MAPE,
     MAPE_naive,
+    Beats_naive,
     Evidence_type
   ) %>%
   arrange(Actual_test_change)
 
 decline_candidates
+
 
 # ---- 7. visualisation ----
 p_roll <- ggplot() +
@@ -433,10 +486,19 @@ ggsave("Rolling_actual_vs_predicted.png", plot = p_roll,
        width = 12, height = 10, units = "in", dpi = 300, bg = "white")
 
 
-# =====================================================================
+
+### test
+test_direction
+
+### Accuracy in percentage
+mean(test_direction$Direction_correct) * 100
+
+
+
+
 # RQ3 (prescriptive): job impact of declining industries
-# (same logic as before, now fed by the rolling-average results)
-# =====================================================================
+# same logic as before, now fed by the rolling-average results
+
 candidate_industries <- decline_candidates %>% pull(Industry)
 candidate_industries
 
@@ -465,3 +527,6 @@ rq3_priority <- decline_candidates %>%
   arrange(desc(Jobs_lost))
 
 rq3_priority
+
+
+
