@@ -130,6 +130,30 @@ future_summary %>%
   tab_header(title = "Forecast SME Establishments by Industry, 2024 to 2029")
 
 
+# save file
+future_tbl <- future_summary %>%
+  transmute(
+    Industry,
+    `2024 actual`   = Establishments_2024,
+    `2029 forecast` = round(Predicted_end),
+    `Change`        = round(Predicted_change),
+    `Change (%)`    = round(Pct_change, 1),
+    Outlook = if_else(Outlook == "Decline" | Outlook == "Growth",
+                      Outlook, "No change"),
+    Confidence = case_when(
+      grepl("^Decline likely", Confidence) ~ "Decline likely",
+      grepl("^Growth likely",  Confidence) ~ "Growth likely",
+      TRUE                                 ~ "Uncertain"
+    )
+  ) %>%
+  gt() %>%
+  tab_header(title = "Forecast SME Establishments by Industry, 2024 to 2029") %>%
+  tab_source_note("Confidence: 'likely' means the whole 80% forecast range is on one side of the 2024 level.")
+
+future_tbl                                   # shows it in the Viewer
+gtsave(future_tbl, "future_forecast_table.docx")
+
+
 
 # plot: history + forecast + 80% range
 p_future <- ggplot() +
