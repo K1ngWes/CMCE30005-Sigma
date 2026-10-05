@@ -141,26 +141,38 @@ gtsave(future_tbl, "future_forecast_table.docx")
 
 
 # plot: history + forecast + 80% range
+# colour the forecast by outlook: red = forecast decline, blue = everything else
+plot_forecast <- future_forecast %>%
+  left_join(select(future_summary, Industry, Outlook), by = "Industry") %>%
+  mutate(Group = if_else(Outlook == "Decline", "Forecast decline", "Other"))
+
 p_future <- ggplot() +
   geom_line(data = trend,
             aes(x = Year, y = Establishments, group = Industry),
             colour = "black") +
-  geom_ribbon(data = future_forecast,
-              aes(x = Year, ymin = Lower80, ymax = Upper80, group = Industry),
-              fill = "#377EB8", alpha = 0.2) +
-  geom_line(data = future_forecast,
-            aes(x = Year, y = Predicted, group = Industry),
-            colour = "#377EB8", linetype = "dashed") +
-  facet_wrap(~ Industry, scales = "free_y", ncol = 4) +
+  geom_ribbon(data = plot_forecast,
+              aes(x = Year, ymin = Lower80, ymax = Upper80,
+                  group = Industry, fill = Group),
+              alpha = 0.25) +
+  geom_line(data = plot_forecast,
+            aes(x = Year, y = Predicted, group = Industry, colour = Group),
+            linetype = "dashed", linewidth = 0.8) +
+  scale_colour_manual(values = c("Forecast decline" = "#D32F2F", "Other" = "#377EB8"),
+                      name = NULL) +
+  scale_fill_manual(values = c("Forecast decline" = "#D32F2F", "Other" = "#377EB8"),
+                    name = NULL) +
+  facet_wrap(~ Industry, scales = "free_y", ncol = 4,
+             labeller = label_wrap_gen(width = 25)) +
   labs(
     title    = "ARIMA Forecast of SME Establishments by Industry, 2025-2029",
-    subtitle = "Black: actual 2002-2024 | Blue dashed: forecast | Shaded: 80% range",
+    subtitle = "Black: actual 2002-2024 | Dashed and shaded: forecast with 80% range (red = forecast decline)",
     x = "Year", y = "Total establishments"
   ) +
   theme_minimal() +
-  theme(strip.text  = element_text(size = 9),
-        axis.text.x = element_text(size = 7),
-        axis.text.y = element_text(size = 7))
+  theme(strip.text      = element_text(size = 9),
+        axis.text.x     = element_text(size = 7),
+        axis.text.y     = element_text(size = 7),
+        legend.position = "none")
 
 p_future
 
@@ -191,6 +203,7 @@ persistence <- trend %>%
   )
 
 persistence
+
 
 # RQ3 step 2: employment impact, 2002 vs 2024, for ALL industries
 #   Jobs_lost = Jobs_2002 - Jobs_2024
@@ -234,8 +247,6 @@ rq3_priority <- future_summary %>%
 print(rq3_priority, n = Inf, width = Inf)
 
 
-# =====================================================================
-# 4. SAVE TABLES (open the CSVs to build properly formatted Word tables)
-# =====================================================================
+# 4. save
 write.csv(future_summary, "future_summary.csv", row.names = FALSE)
 write.csv(rq3_priority,   "rq3_priority.csv",   row.names = FALSE)
