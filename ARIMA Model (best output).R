@@ -162,10 +162,6 @@ year_summary
 
 ### VISUALISATION DS1
 ### Vis 1 for all 19 industries: SME establishment trends by industry 
-
-# already answers the descriptive question!!!
-
-library(ggplot2)
 ggplot(
   industry_trend,
   aes(
@@ -191,8 +187,6 @@ ggsave(
 )
 
 ### Vis 2: integrate all 19 industries trend over time into same diagram
-library(ggplot2)
-
 ggplot(
   industry_trend,
   aes(
@@ -267,7 +261,89 @@ ggsave(
 )
 
 
-# check duplicates
+
+### Newest update for feedback: add change before and after COVID (split at 2019)
+covid_split <- industry_trend %>%
+  rename(Establishments = `Total establishments`) %>%
+  group_by(Industry) %>%
+  summarise(
+    Est_2002 = Establishments[Year == 2002],
+    Est_2019 = Establishments[Year == 2019],
+    Est_2024 = Establishments[Year == 2024],
+    .groups = "drop"
+  ) %>%
+  mutate(
+    Change_pre  = Est_2019 - Est_2002,                 # 2002-2019 (17 years)
+    Change_post = Est_2024 - Est_2019,                 # 2019-2024 (5 years)
+    Pct_pre     = Change_pre  / Est_2002 * 100,
+    Pct_post    = Change_post / Est_2019 * 100,
+    Per_year_pre  = Change_pre  / 17,                  # fair comparison: the periods differ in length
+    Per_year_post = Change_post / 5,
+    Pattern = case_when(
+      Change_pre >= 0 & Change_post <  0 ~ "Grew, then fell after 2019",
+      Change_pre <  0 & Change_post <  0 ~ "Declining in both periods",
+      Change_pre <  0 & Change_post >= 0 ~ "Fell, then recovered",
+      TRUE                                ~ "Growing in both periods"
+    )
+  ) %>%
+  arrange(Change_post)
+
+print(covid_split, n = Inf, width = Inf)
+
+# 2. chart: percentage change before vs after, by industry
+covid_long <- covid_split %>%
+  select(Industry, Pct_pre, Pct_post) %>%
+  pivot_longer(-Industry, names_to = "Period", values_to = "Pct_change") %>%
+  mutate(Period = recode(Period,
+                         Pct_pre  = "Before COVID (2002-2019)",
+                         Pct_post = "After COVID (2019-2024)"))
+
+ggplot(industry_trend,
+       aes(x = Year, y = `Total establishments`)) +
+  geom_line() +
+  geom_vline(xintercept = 2019, linetype = "dashed", colour = "#D32F2F") +
+  scale_x_continuous(breaks = c(2005, 2015, 2024)) +     # <- new line
+  facet_wrap(~ Industry, scales = "free_y",
+             labeller = label_wrap_gen(width = 25)) +
+  labs(title = "SME Establishment Trends by Industry (dashed line = 2019)",
+       x = "Year", y = "Total establishments") +
+  theme_minimal()
+
+ggsave("SME_industry_trends_covid_line.png", width = 12, height = 8, dpi = 300, bg = "white")
+
+# 3. or try mark 2019 on existing faceted trend chart
+ggplot(industry_trend,
+       aes(x = Year, y = `Total establishments`)) +
+  geom_line() +
+  geom_vline(xintercept = 2019, linetype = "dashed", colour = "#D32F2F") +
+  facet_wrap(~ Industry, scales = "free_y", labeller = label_wrap_gen(width = 25)) +
+  labs(title = "SME Establishment Trends by Industry (dashed line = 2019)",
+       x = "Year", y = "Total establishments") +
+  theme_minimal()
+
+ggsave("SME_industry_trends_covid_line.png", width = 12, height = 8, dpi = 300, bg = "white")
+
+
+
+# Change in SME establishments before and after COVID
+ggplot(covid_long,
+       aes(x = reorder(Industry, Pct_change), y = Pct_change, fill = Period)) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  scale_y_continuous(breaks = seq(-100, 150, 50)) +
+  scale_fill_manual(values = c("Before COVID (2002-2019)" = "#377EB8",
+                               "After COVID (2019-2024)"  = "#E57373"),
+                    name = NULL) +
+  labs(title = "Change in SME Establishments Before and After COVID-19",
+       x = NULL, y = "Change in establishments (%)") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+ggsave("SME_covid_split.png", width = 12, height = 8, dpi = 300, bg = "white")
+
+
+
+### check duplicates
 library(dplyr)
 
 sme_cbd %>%
@@ -292,7 +368,7 @@ sum(sme_cbd$Total_jobs < 0, na.rm = TRUE)
 train_end <- 2015     # model only sees data up to this year
 test_end  <- 2019     # forecast up to this year (use 2024 to include COVID)
 
-# ---- 1. fit one ARIMA per industry on the training years, forecast ahead ----
+# 1. fit one ARIMA per industry on the training years, forecast ahead
 # auto.arima() chooses the ARIMA(p,d,q) orders automatically (AIC-based).
 # The forecast is multi-step from a fixed origin: no peeking at test years.
 trend <- industry_trend %>%
@@ -325,7 +401,7 @@ test_predictions
 # which ARIMA orders were chosen? (useful for the report)
 test_predictions %>% distinct(Industry, ARIMA_order)
 
-# ---- 2. accuracy: ARIMA vs naive benchmark ----
+# 2. accuracy: ARIMA vs naive benchmark ----
 model_performance <- test_predictions %>%
   filter(Actual_establishments > 0) %>%
   group_by(Industry) %>%
@@ -408,15 +484,17 @@ p_arima <- ggplot() +
   geom_point(data = test_predictions,
              aes(x = Year, y = Actual_establishments),
              colour = "#E57373", size = 1.5) +
-  facet_wrap(~ Industry, scales = "free_y", ncol = 4) +
+  scale_x_continuous(breaks = c(2005, 2015, 2024)) +
+  facet_wrap(~ Industry, scales = "free_y", ncol = 4,
+             labeller = label_wrap_gen(width = 25)) +
   labs(
-    title    = "Actual and ARIMA Forecast of SME Establishments by Industry",
+    title = "Actual and ARIMA Forecast of SME Establishments by Industry",
     subtitle = paste0("Black: actual | Red: actual in test period | Blue: ARIMA forecast from ",
                       train_end),
     x = "Year", y = "Total establishments"
   ) +
   theme_minimal() +
-  theme(strip.text  = element_text(size = 9),
+  theme(strip.text = element_text(size = 9),
         axis.text.x = element_text(size = 7),
         axis.text.y = element_text(size = 7))
 
