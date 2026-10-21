@@ -228,8 +228,6 @@ industry_change$Change <-
 
 # plot: comparing the total SME establishments in each industry in 2002 vs 2024
 # How much did the number of SME establishments change between the first year and the last year?
-library(ggplot2)
-
 ggplot(
   industry_change,
   aes(
@@ -262,7 +260,7 @@ ggsave(
 
 
 
-### Newest update for feedback: add change before and after COVID (split at 2019)
+### Newest update after feedback: add change before and after COVID (split at 2019)
 covid_split <- industry_trend %>%
   rename(Establishments = `Total establishments`) %>%
   group_by(Industry) %>%
@@ -290,28 +288,7 @@ covid_split <- industry_trend %>%
 
 print(covid_split, n = Inf, width = Inf)
 
-# 2. chart: percentage change before vs after, by industry
-covid_long <- covid_split %>%
-  select(Industry, Pct_pre, Pct_post) %>%
-  pivot_longer(-Industry, names_to = "Period", values_to = "Pct_change") %>%
-  mutate(Period = recode(Period,
-                         Pct_pre  = "Before COVID (2002-2019)",
-                         Pct_post = "After COVID (2019-2024)"))
-
-ggplot(industry_trend,
-       aes(x = Year, y = `Total establishments`)) +
-  geom_line() +
-  geom_vline(xintercept = 2019, linetype = "dashed", colour = "#D32F2F") +
-  scale_x_continuous(breaks = c(2005, 2015, 2024)) +     # <- new line
-  facet_wrap(~ Industry, scales = "free_y",
-             labeller = label_wrap_gen(width = 25)) +
-  labs(title = "SME Establishment Trends by Industry (dashed line = 2019)",
-       x = "Year", y = "Total establishments") +
-  theme_minimal()
-
-ggsave("SME_industry_trends_covid_line.png", width = 12, height = 8, dpi = 300, bg = "white")
-
-# 3. or try mark 2019 on existing faceted trend chart
+# 2. chart: percentage change before vs after, by industry. and mark 2019 on existing faceted trend chart
 ggplot(industry_trend,
        aes(x = Year, y = `Total establishments`)) +
   geom_line() +
@@ -514,62 +491,3 @@ mean(test_direction$Direction_correct) * 100
 
 table(Actual = test_direction$Actual_test_direction,
       Predicted = test_direction$Predicted_direction)
-
-
-
-#----------------------------------------------------------------------
-
-# RQ3 
-
-# RQ3 step 1: candidate industries
-# Takes the industries that actually declined in the test period from RQ2
-# and lists their names. These are the industries we check for job impact.
-# Output: a list of 7 industry names.
-candidate_industries <- decline_candidates %>% pull(Industry)
-candidate_industries
-
-
-# RQ3 step 2: job impact of each candidate industry
-# Compares total jobs in 2002 vs 2024 for those industries.
-#   Job_change = Jobs_2024 - Jobs_2002 (negative = jobs fell)
-#   Jobs_lost  = Jobs_2002 - Jobs_2024
-#   (POSITIVE = jobs fell, NEGATIVE = jobs actually grew)
-#   Percentage_job_change = change as a % of the 2002 job count
-# Sorted so the biggest job losses are at the top.
-job_impact <- jobs_trend %>%
-  filter(
-    Industry %in% candidate_industries,
-    Year %in% c(2002, 2024)
-  ) %>%
-  pivot_wider(
-    names_from  = Year,
-    values_from = `Total jobs`,
-    names_prefix = "Jobs_"
-  ) %>%
-  mutate(
-    Job_change = Jobs_2024 - Jobs_2002,
-    Jobs_lost  = Jobs_2002 - Jobs_2024,
-    Percentage_job_change = (Jobs_2024 - Jobs_2002) / Jobs_2002 * 100
-  ) %>%
-  arrange(desc(Jobs_lost))
-
-job_impact
-
-
-# RQ3 step 3: priority table
-# Joins the RQ2 results (change in establishments, forecast error MAPE,
-# and whether the decline was predicted or "emerging") with the job impact
-# above, giving one table to rank industries.
-# Industries near the top lost the most jobs, so they are the highest priority.
-rq3_priority <- decline_candidates %>%
-  select(Industry, Actual_test_change, MAPE, Evidence_type) %>%
-  left_join(job_impact, by = "Industry") %>%
-  arrange(desc(Jobs_lost))
-
-rq3_priority
-
-
-
-
-
-
