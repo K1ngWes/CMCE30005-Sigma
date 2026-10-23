@@ -18,7 +18,7 @@ establishments to 2029 with per-industry ARIMA models, and place each industry i
 
 ### Research Questions
 
-1. How has the composition of SMEs in Melbourne CBD changed between 2002-2004?
+1. How has the composition of SMEs in Melbourne CBD changed between 2002-2024?
 
 2. Which SME industries in Melbourne CBD are most at risk of continued decline in establishments
    in the following 5 years?
