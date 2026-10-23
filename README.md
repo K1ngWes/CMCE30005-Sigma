@@ -45,8 +45,11 @@ establishments to 2029 with per-industry ARIMA models, and place each industry i
 ### Methodology
 
 **RQ1:** annual trends by industry, then percentage change before (2002-2019) and after (2019-2024) COVID-19.
+
 **RQ2:** one ARIMA model per industry (`auto.arima`, lowest corrected AIC), refitted on 2002-2024 to forecast 2025-2029 with 80% intervals.
+
 **Validation:** trained on 2002-2015, tested on 2016-2019; compared with a "no change" benchmark (MAPE) and an "always growth" baseline (direction accuracy). The split was chosen after comparing several, so results are indicative.
+
 **RQ3:** each industry placed in a risk tier from three evidence points: decline before 2019, decline after 2019, and forecast decline to 2029. Jobs lost 2002-2024 show impact.
 
 
