@@ -1,8 +1,8 @@
-### FULL-DATA VERSION: ARIMA forecast (2025 onwards) + RQ3 priority
+### FULL-DATA VERSION: ARIMA forecast (2025-2029) + RQ3 priority
 ### The train/test script is the EVALUATION of this method.
 ### This script refits the same method on ALL data (2002-2024) to forecast the future.
 
-#install.packages(c("ggplot2", "dplyr", "tidyr", "forecast"))  # run once
+#install.packages(c("ggplot2", "dplyr", "tidyr", "forecast")) 
 
 library(ggplot2)
 library(dplyr)
@@ -17,7 +17,7 @@ include_long_run_decliners <- FALSE
 # TRUE  = also include industries that declined over 2002-2024 AND 2019-2024
 
 
-# 1. LOAD AND CLEAN (same steps as the evaluation script)
+# 1. LOAD AND CLEAN
 business_establishments_and_jobs <- read.csv(
   "~/Desktop/BAC/business-establishments-and-jobs-data-by-business-size-and-anzsic.csv",
   check.names = FALSE
@@ -250,3 +250,34 @@ print(rq3_priority, n = Inf, width = Inf)
 # 4. save
 write.csv(future_summary, "future_summary.csv", row.names = FALSE)
 write.csv(rq3_priority,   "rq3_priority.csv",   row.names = FALSE)
+
+
+### Visualisation for recommendation section
+install.packages("ggrepel")   # once
+library(ggrepel)
+
+ggplot(risk_table, aes(x = Pct_pre, y = Pct_post, colour = Risk_tier)) +
+  annotate("rect", xmin = -Inf, xmax = 0, ymin = -Inf, ymax = 0,
+           fill = "#E57373", alpha = 0.10) +
+  geom_hline(yintercept = 0, linetype = "dashed", colour = "grey50") +
+  geom_vline(xintercept = 0, linetype = "dashed", colour = "grey50") +
+  geom_point(aes(size = Est_2019), alpha = 0.85) +
+  geom_text_repel(aes(label = stringr::str_wrap(Industry, 22)),
+                  size = 3, max.overlaps = Inf, show.legend = FALSE) +
+  scale_size_area(max_size = 12, name = "Establishments in 2019") +
+  scale_colour_manual(
+    values = c("1. High risk" = "#C62828",
+               "2. Structural decline, forecast unclear" = "#EF6C00",
+               "3. Watch" = "#F9A825",
+               "4. Too small to rank" = "#9E9E9E",
+               "5. Low risk" = "#2E7D32"),
+    name = NULL) +
+  labs(title = "Risk tiers: change in SME establishments before and after 2019",
+       x = "Change 2002-2019 (%)", y = "Change 2019-2024 (%)") +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+
+ggsave("risk_tier_chart.png", width = 12, height = 8, dpi = 300, bg = "white")
+
+
+

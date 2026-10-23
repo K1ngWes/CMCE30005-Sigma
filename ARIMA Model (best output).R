@@ -338,15 +338,14 @@ sum(sme_cbd$Total_jobs < 0, na.rm = TRUE)
 # -----------------------------------------------------------------------
 
 
-# RQ2 (predictive): ARIMA FORECAST  (replaces the rolling-average block)
-# Run AFTER the code that creates industry_trend and jobs_trend
+### RQ2 (predictive): ARIMA FORECAST
 
-# settings
+# settings for validation
 train_end <- 2015     # model only sees data up to this year
-test_end  <- 2019     # forecast up to this year (use 2024 to include COVID)
+test_end  <- 2019     # forecast up to this year
 
 # 1. fit one ARIMA per industry on the training years, forecast ahead
-# auto.arima() chooses the ARIMA(p,d,q) orders automatically (AIC-based).
+# let auto.arima() chooses the ARIMA(p,d,q) orders automatically (AIC-based).
 # The forecast is multi-step from a fixed origin: no peeking at test years.
 trend <- industry_trend %>%
   rename(Establishments = `Total establishments`) %>%
@@ -378,7 +377,7 @@ test_predictions
 # which ARIMA orders were chosen? (useful for the report)
 test_predictions %>% distinct(Industry, ARIMA_order)
 
-# 2. accuracy: ARIMA vs naive benchmark ----
+# 2. accuracy: ARIMA vs naive benchmark
 model_performance <- test_predictions %>%
   filter(Actual_establishments > 0) %>%
   group_by(Industry) %>%
@@ -393,7 +392,7 @@ model_performance <- test_predictions %>%
 
 model_performance
 
-# ---- 3. direction: did the ARIMA forecast get up/down right? ----
+# 3. direction: did the ARIMA forecast get up/down right?
 test_direction <- test_predictions %>%
   group_by(Industry) %>%
   summarise(
@@ -409,7 +408,7 @@ test_direction <- test_predictions %>%
 
 test_direction
 
-# headline numbers (compare with "always growth" baseline)
+# headline numbers
 mean(test_direction$Direction_correct) * 100                  # model
 mean(test_direction$Actual_test_direction == "Growth") * 100  # baseline
 
@@ -486,8 +485,6 @@ ggsave("ARIMA_actual_vs_predicted.png", plot = p_arima,
 test_direction
 
 mean(test_direction$Direction_correct) * 100
-
-
 
 table(Actual = test_direction$Actual_test_direction,
       Predicted = test_direction$Predicted_direction)
